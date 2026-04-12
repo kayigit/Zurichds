@@ -651,8 +651,19 @@ footer {
 
 @media (max-width: 480px) {
   html { font-size: 14px; }
+  
   .topbar { padding: 0.4rem 0.75rem; }
-  .nav-inner { padding: 0.5rem 0.75rem; }
+  
+  .nav-inner {
+    padding: 0.5rem 0.75rem;
+    height: auto;
+  }
+  .nav-search {
+    display: none;
+  }
+  .nav-btn {
+    display: none;
+  }
   .logo-text { font-size: 16px; }
   .page-hero { padding: 2.5rem 0.75rem 2rem; }
   .page-hero-h1 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.75rem; }
@@ -663,6 +674,102 @@ footer {
   .cta-band { padding: 1.5rem 0.75rem; }
   .cta-band-text { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   footer { padding: 1.5rem 0.75rem 1rem; }
+}
+/* SEARCH MODAL */
+.search-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(10,22,40,0.8); backdrop-filter: blur(4px);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+.search-overlay.active { display: flex; align-items: flex-start; justify-content: center; padding-top: 80px; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.search-modal {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 20px 60px rgba(10,22,40,0.3);
+  animation: slideDown 0.3s ease;
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.search-modal-head { 
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.search-modal-title {
+  font-size: 1.5rem; font-weight: 600;
+  color: var(--black);
+}
+.search-modal-close {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 18px;
+  color: var(--muted);
+}
+.search-modal-close:hover { background: var(--bg); color: var(--dark); }
+
+.search-input-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+.search-input:focus {
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(200,0,26,0.1);
+}
+.search-input-icon {
+  position: absolute; left: 0.75rem; top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.search-results {
+  max-height: 400px;
+  overflow-y: auto;
+}
+.search-result-item {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.search-result-item:last-child { border-bottom: none; }
+.search-result-item:hover { background: var(--bg); }
+.search-result-title {
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 0.25rem;
+}
+.search-result-desc {
+  font-size: 13px;
+  color: var(--muted);
+}
+.search-no-results {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--muted);
 }
 </style>
 </head>
@@ -703,7 +810,7 @@ footer {
           <div class="mega-item"><a href="#">Datalift</a></div>
         </div>
       </li>
-      <li class="nav-item"><a href="#">About</a></li>
+      <li class="nav-item"><a href="#">About Us</a></li>
       <li class="nav-item"><a href="#">Careers</a></li>
     </ul>
 
@@ -759,6 +866,23 @@ footer {
   <a href="mailto:hello@zurichds.com" class="btn-green">Start the conversation →</a>
 </div>
 </div>
+<!-- Search Modal -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-modal-head">
+      <h2 class="search-modal-title">Search</h2>
+      <div class="search-modal-close" id="searchClose">&times;</div>
+    </div>
+    <div class="search-input-wrapper">
+      <svg class="search-input-icon" width="16" height="16" fill="none" viewBox="0 0 16 16">
+        <circle cx="6.5" cy="6.5" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="10" y1="10" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search services, products, or industries...">
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
 <footer>
   <div class="footer-top">
     <div>
@@ -797,7 +921,7 @@ footer {
     <div class="footer-col">
       <div class="footer-col-head">Company</div>
       <ul>
-        <li><a href="about.html">About us</a></li>
+        <li><a href="about.html">About Us</a></li>
         <li>Leadership</li>
         <li><a href="careers.html">Careers</a></li>
         <li>Press</li>
@@ -844,7 +968,7 @@ const pageMap = {
   'Medical Devices': 'medical-devices.html',
   'Batch Release Accelerator': 'batch-release-accelerator.html',
   'Datalift': 'datalift.html',
-  'About': 'about.html',
+  'About Us': 'about.html',
   'Careers': 'careers.html',
 };
 document.querySelectorAll('a').forEach(a => {
@@ -856,6 +980,86 @@ document.querySelectorAll('a').forEach(a => {
 });
 document.querySelector('.logo-text') && (document.querySelector('.logo-text').closest('a, div').style.cursor='pointer');
 document.querySelector('.logo-mark').addEventListener('click', () => location.href='index.html');
+
+// ── SEARCH MODAL ──
+const searchOverlay = document.getElementById('searchOverlay') || { classList: {} };
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+const navSearch = document.querySelector('.nav-search');
+const searchClose = document.getElementById('searchClose');
+
+// Search data
+const searchData = [
+  { title: 'SAP / ERP Consulting', desc: 'End-to-end implementation, rollout and optimization of SAP landscapes', link: 'sap-erp.html', keywords: ['sap', 'erp', 'consulting'] },
+  { title: 'Integration Management', desc: 'End-to-end governance and delivery oversight of integration programs', link: 'integration-management.html', keywords: ['integration', 'management'] },
+  { title: 'Project Management', desc: 'Structured delivery of complex SAP initiatives', link: 'project-management.html', keywords: ['project', 'management'] },
+  { title: 'Digital Transformation', desc: 'Strategic roadmaps from legacy ERP to modern digital operations', link: 'digital-transformation.html', keywords: ['digital', 'transformation'] },
+  { title: 'Data Governance & Quality', desc: 'Enterprise data governance frameworks, quality rules, stewardship programs', link: 'data-governance.html', keywords: ['data', 'governance', 'quality'] },
+  { title: 'Pharmaceuticals & Life Sciences', desc: 'SAP expertise for pharmaceutical and life science companies', link: 'pharma.html', keywords: ['pharma', 'pharmaceutical', 'life sciences'] },
+  { title: 'Manufacturing', desc: 'Manufacturing industry solutions and expertise', link: 'manufacturing.html', keywords: ['manufacturing'] },
+  { title: 'Chemicals', desc: 'Chemicals industry solutions and consulting', link: 'chemicals.html', keywords: ['chemicals'] },
+  { title: 'Medical Devices', desc: 'Medical devices industry compliance and solutions', link: 'medical-devices.html', keywords: ['medical', 'devices'] },
+  { title: 'Datalift', desc: 'SAP-native data quality and governance platform', link: 'datalift.html', keywords: ['datalift', 'data quality'] },
+  { title: 'Batch Release Accelerator', desc: 'Batch Release Accelerator product', link: 'batch-release-accelerator.html', keywords: ['batch', 'release', 'accelerator'] },
+  { title: 'About Us', desc: 'Learn about Zurich DS', link: 'about.html', keywords: ['about', 'zurich', 'ds'] },
+  { title: 'Careers', desc: 'Join our team at Zurich DS', link: 'careers.html', keywords: ['careers', 'jobs'] }
+];
+
+if (navSearch && searchOverlay && document.getElementById('searchOverlay')) {
+  navSearch.addEventListener('click', () => {
+    searchOverlay.classList.add('active');
+    searchInput.focus();
+  });
+
+  searchClose.addEventListener('click', () => {
+    searchOverlay.classList.remove('active');
+  });
+
+  searchOverlay.addEventListener('click', (e) => {
+    if (e.target === searchOverlay) {
+      searchOverlay.classList.remove('active');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+      searchOverlay.classList.remove('active');
+    }
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    
+    if (!query) {
+      searchResults.innerHTML = '';
+      return;
+    }
+    
+    const results = searchData.filter(item => 
+      item.title.toLowerCase().includes(query) ||
+      item.desc.toLowerCase().includes(query) ||
+      item.keywords.some(k => k.includes(query))
+    );
+    
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="search-no-results">No results found for "' + query + '"</div>';
+      return;
+    }
+    
+    searchResults.innerHTML = results.map(item => `
+      <a href="${item.link}" class="search-result-item" onclick="document.getElementById('searchOverlay').classList.remove('active')">
+        <div class="search-result-title">${item.title}</div>
+        <div class="search-result-desc">${item.desc}</div>
+      </a>
+    `).join('');
+  });
+}
+
+// ── CONTACT BUTTON FIX ──
+const contactBtn = document.querySelector('a.nav-btn[href="#contact"]');
+if (contactBtn && !document.getElementById('contact')) {
+  contactBtn.href = 'index.html#contact';
+}
 </script>
 </body>
 </html>

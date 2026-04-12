@@ -891,6 +891,12 @@ footer {
     padding: 0.5rem 0.75rem;
     height: auto;
   }
+  .nav-search {
+    display: none;
+  }
+  .nav-btn {
+    display: none;
+  }
   .logo-text {
     font-size: 16px;
   }
@@ -1045,7 +1051,6 @@ footer {
     </div>
 
     <ul class="nav-links">
-      <li class="nav-item"><a href="index.html">Home</a></li>
       <li class="nav-item">
         <a href="#">Services <span class="nav-chevron">›</span></a>
         <div class="mega">
@@ -1450,7 +1455,7 @@ footer {
     <div class="footer-col">
       <div class="footer-col-head">Company</div>
       <ul>
-        <li><a href="about.html">About us</a></li>
+        <li><a href="about.html">About Us</a></li>
         <li>Leadership</li>
         <li><a href="careers.html">Careers</a></li>
         <li>Press</li>
@@ -1627,6 +1632,18 @@ if (navToggle && navLinks) {
     }
   });
 }
+
+// ── SERVICE TILES CLICK HANDLER ──
+document.querySelectorAll('.svc-tile').forEach(tile => {
+  const titleElement = tile.querySelector('.svc-title');
+  const href = titleElement ? titleElement.getAttribute('href') : null;
+  
+  if (href) {
+    tile.addEventListener('click', () => {
+      window.location.href = href;
+    });
+  }
+});
 
 </script>
 </body>
