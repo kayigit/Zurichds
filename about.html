@@ -1044,6 +1044,24 @@ footer {
   </div>
 </div>
 
+<!-- Search Modal -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-modal-head">
+      <h2 class="search-modal-title">Search</h2>
+      <div class="search-modal-close" id="searchClose">&times;</div>
+    </div>
+    <div class="search-input-wrapper">
+      <svg class="search-input-icon" width="16" height="16" fill="none" viewBox="0 0 16 16">
+        <circle cx="6.5" cy="6.5" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="10" y1="10" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search services, products, or industries...">
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
 <footer>
   <div class="footer-top">
     <div>
@@ -1239,6 +1257,91 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+// ── SEARCH MODAL ──
+const searchOverlay = document.getElementById('searchOverlay');
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+const navSearch = document.querySelector('.nav-search');
+const searchClose = document.getElementById('searchClose');
+
+// Search data - pages and their keywords
+const searchData = [
+  { title: 'SAP / ERP Consulting', desc: 'End-to-end implementation, rollout and optimization of SAP landscapes', link: 'sap-erp.html', keywords: ['sap', 'erp', 'consulting'] },
+  { title: 'Integration Management', desc: 'End-to-end governance and delivery oversight of integration programs', link: 'integration-management.html', keywords: ['integration', 'management'] },
+  { title: 'Project Management', desc: 'Structured delivery of complex SAP initiatives', link: 'project-management.html', keywords: ['project', 'management'] },
+  { title: 'Digital Transformation', desc: 'Strategic roadmaps from legacy ERP to modern digital operations', link: 'digital-transformation.html', keywords: ['digital', 'transformation'] },
+  { title: 'Data Governance & Quality', desc: 'Enterprise data governance frameworks, quality rules, stewardship programs', link: 'data-governance.html', keywords: ['data', 'governance', 'quality'] },
+  { title: 'Pharmaceuticals & Life Sciences', desc: 'SAP expertise for pharmaceutical and life science companies', link: 'pharma.html', keywords: ['pharma', 'pharmaceutical', 'life sciences'] },
+  { title: 'Manufacturing', desc: 'Manufacturing industry solutions and expertise', link: 'manufacturing.html', keywords: ['manufacturing'] },
+  { title: 'Chemicals', desc: 'Chemicals industry solutions and consulting', link: 'chemicals.html', keywords: ['chemicals'] },
+  { title: 'Medical Devices', desc: 'Medical devices industry compliance and solutions', link: 'medical-devices.html', keywords: ['medical', 'devices'] },
+  { title: 'Datalift', desc: 'SAP-native data quality and governance platform', link: 'datalift.html', keywords: ['datalift', 'data quality'] },
+  { title: 'Batch Release Accelerator', desc: 'Batch Release Accelerator product', link: 'batch-release-accelerator.html', keywords: ['batch', 'release', 'accelerator'] },
+  { title: 'About Us', desc: 'Learn about Zurich DS', link: 'about.html', keywords: ['about', 'zurich', 'ds'] },
+  { title: 'Careers', desc: 'Join our team at Zurich DS', link: 'careers.html', keywords: ['careers', 'jobs'] }
+];
+
+// Open search modal
+if (navSearch && searchOverlay) {
+  navSearch.addEventListener('click', () => {
+    searchOverlay.classList.add('active');
+    searchInput.focus();
+  });
+
+  // Close search modal
+  searchClose.addEventListener('click', () => {
+    searchOverlay.classList.remove('active');
+  });
+
+  // Close on overlay click
+  searchOverlay.addEventListener('click', (e) => {
+    if (e.target === searchOverlay) {
+      searchOverlay.classList.remove('active');
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+      searchOverlay.classList.remove('active');
+    }
+  });
+
+  // Search function
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    
+    if (!query) {
+      searchResults.innerHTML = '';
+      return;
+    }
+    
+    const results = searchData.filter(item => 
+      item.title.toLowerCase().includes(query) ||
+      item.desc.toLowerCase().includes(query) ||
+      item.keywords.some(k => k.includes(query))
+    );
+    
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="search-no-results">No results found for "' + query + '"</div>';
+      return;
+    }
+    
+    searchResults.innerHTML = results.map(item => `
+      <a href="${item.link}" class="search-result-item" onclick="document.getElementById('searchOverlay').classList.remove('active')">
+        <div class="search-result-title">${item.title}</div>
+        <div class="search-result-desc">${item.desc}</div>
+      </a>
+    `).join('');
+  });
+}
+
+// ── CONTACT BUTTON FIX ──
+const contactBtn = document.querySelector('a.nav-btn[href="#contact"]');
+if (contactBtn && !document.getElementById('contact')) {
+  contactBtn.href = 'index.html#contact';
+}
+
 // ── MOBILE HAMBURGER MENU ──
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.querySelector('.nav-links');
@@ -1278,6 +1381,91 @@ if (navToggle && navLinks) {
       navLinks.classList.remove('mobile-open');
     }
   });
+}
+
+// ── SEARCH MODAL ──
+const searchOverlay = document.getElementById('searchOverlay');
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+const navSearch = document.querySelector('.nav-search');
+const searchClose = document.getElementById('searchClose');
+
+// Search data - pages and their keywords
+const searchData = [
+  { title: 'SAP / ERP Consulting', desc: 'End-to-end implementation, rollout and optimization of SAP landscapes', link: 'sap-erp.html', keywords: ['sap', 'erp', 'consulting'] },
+  { title: 'Integration Management', desc: 'End-to-end governance and delivery oversight of integration programs', link: 'integration-management.html', keywords: ['integration', 'management'] },
+  { title: 'Project Management', desc: 'Structured delivery of complex SAP initiatives', link: 'project-management.html', keywords: ['project', 'management'] },
+  { title: 'Digital Transformation', desc: 'Strategic roadmaps from legacy ERP to modern digital operations', link: 'digital-transformation.html', keywords: ['digital', 'transformation'] },
+  { title: 'Data Governance & Quality', desc: 'Enterprise data governance frameworks, quality rules, stewardship programs', link: 'data-governance.html', keywords: ['data', 'governance', 'quality'] },
+  { title: 'Pharmaceuticals & Life Sciences', desc: 'SAP expertise for pharmaceutical and life science companies', link: 'pharma.html', keywords: ['pharma', 'pharmaceutical', 'life sciences'] },
+  { title: 'Manufacturing', desc: 'Manufacturing industry solutions and expertise', link: 'manufacturing.html', keywords: ['manufacturing'] },
+  { title: 'Chemicals', desc: 'Chemicals industry solutions and consulting', link: 'chemicals.html', keywords: ['chemicals'] },
+  { title: 'Medical Devices', desc: 'Medical devices industry compliance and solutions', link: 'medical-devices.html', keywords: ['medical', 'devices'] },
+  { title: 'Datalift', desc: 'SAP-native data quality and governance platform', link: 'datalift.html', keywords: ['datalift', 'data quality'] },
+  { title: 'Batch Release Accelerator', desc: 'Batch Release Accelerator product', link: 'batch-release-accelerator.html', keywords: ['batch', 'release', 'accelerator'] },
+  { title: 'About Us', desc: 'Learn about Zurich DS', link: 'about.html', keywords: ['about', 'zurich', 'ds'] },
+  { title: 'Careers', desc: 'Join our team at Zurich DS', link: 'careers.html', keywords: ['careers', 'jobs'] }
+];
+
+// Open search modal
+if (navSearch && searchOverlay) {
+  navSearch.addEventListener('click', () => {
+    searchOverlay.classList.add('active');
+    searchInput.focus();
+  });
+
+  // Close search modal
+  searchClose.addEventListener('click', () => {
+    searchOverlay.classList.remove('active');
+  });
+
+  // Close on overlay click
+  searchOverlay.addEventListener('click', (e) => {
+    if (e.target === searchOverlay) {
+      searchOverlay.classList.remove('active');
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+      searchOverlay.classList.remove('active');
+    }
+  });
+
+  // Search function
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    
+    if (!query) {
+      searchResults.innerHTML = '';
+      return;
+    }
+    
+    const results = searchData.filter(item => 
+      item.title.toLowerCase().includes(query) ||
+      item.desc.toLowerCase().includes(query) ||
+      item.keywords.some(k => k.includes(query))
+    );
+    
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="search-no-results">No results found for "' + query + '"</div>';
+      return;
+    }
+    
+    searchResults.innerHTML = results.map(item => `
+      <a href="${item.link}" class="search-result-item" onclick="document.getElementById('searchOverlay').classList.remove('active')">
+        <div class="search-result-title">${item.title}</div>
+        <div class="search-result-desc">${item.desc}</div>
+      </a>
+    `).join('');
+  });
+}
+
+// ── CONTACT BUTTON FIX ──
+const contactBtn = document.querySelector('a.nav-btn[href="#contact"]');
+if (contactBtn && !document.getElementById('contact')) {
+  contactBtn.href = 'index.html#contact';
 }
 </script>
 </body>
