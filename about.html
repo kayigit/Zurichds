@@ -146,8 +146,84 @@ img { display: block; max-width: 100%; }
 }
 .nav-btn:hover { background: var(--red-d); }
 
-/* ══════════════════════════════════════
-   HERO
+/* Mobile Hamburger Menu */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.hamburger-line {
+  width: 24px;
+  height: 2px;
+  background: var(--dark);
+  display: block;
+  transition: all 0.3s ease;
+}
+.nav-toggle.open .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translateY(11px);
+}
+.nav-toggle.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.open .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translateY(-11px);
+}
+
+/* Mobile Menu */
+.nav-links.mobile-open {
+  display: flex !important;
+  flex-direction: column;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(10,22,40,0.1);
+  gap: 0;
+  z-index: 300;
+}
+.nav-links.mobile-open .nav-item {
+  width: 100%;
+  border-bottom: 1px solid var(--border);
+}
+.nav-links.mobile-open .nav-item > a {
+  padding: 1rem 1.25rem;
+  display: block;
+  border-bottom: none;
+}
+.nav-links.mobile-open .mega {
+  position: static;
+  background: var(--bg);
+  border-top: none;
+  box-shadow: none;
+  padding: 0 1.25rem 1rem;
+  min-width: auto;
+  grid-template-columns: 1fr;
+  gap: 0;
+  display: none;
+}
+.nav-links.mobile-open .nav-item.open .mega {
+  display: grid;
+}
+.nav-links.mobile-open .mega-item {
+  padding: 0.5rem 0;
+  border-bottom: none;
+}
+.nav-links.mobile-open .nav-chevron {
+  transform: rotate(-90deg);
+}
+.nav-links.mobile-open .nav-item.open .nav-chevron {
+  transform: rotate(0deg);
+}
 ══════════════════════════════════════ */
 .hero {
   background: #0A1628;
@@ -659,12 +735,14 @@ footer {
 ══════════════════════════════════════ */
 @media (max-width: 768px) {
   html { font-size: 15px; }
+  .hero-flower { display: none; }
   .topbar { padding: 0.45rem 1rem; gap: 1rem; font-size: 11px; }
   .topbar a { font-size: 10px; }
-  .nav-inner { padding: 0 1.25rem; height: auto; flex-wrap: wrap; }
+  .nav-inner { padding: 0 1.25rem; height: auto; flex-wrap: wrap; position: relative; }
   .nav-logo { margin-right: 1rem; }
-  .nav-links { display: none; }
-  .nav-right { margin-left: 0; width: 100%; justify-content: flex-end; gap: 0.5rem; }
+  .nav-links { display: none; width: 100%; }
+  .nav-toggle { display: flex; }
+  .nav-right { margin-left: 0; gap: 0.5rem; }
   .nav-btn { padding: 0.5rem 1rem; font-size: 12px; }
   .page-hero { padding: 4rem 1.25rem 2.5rem; }
   .page-hero-inner { padding: 0; }
@@ -782,35 +860,36 @@ footer {
     </div>
 
     <ul class="nav-links">
+      <li class="nav-item"><a href="index.html">Home</a></li>
       <li class="nav-item">
-        <a href="#">Services <span class="nav-chevron">▾</span></a>
+        <a href="#">Services <span class="nav-chevron">›</span></a>
         <div class="mega">
-          <div class="mega-item"><a href="#">SAP / ERP Consulting</a></div>
-          <div class="mega-item"><a href="#">Integration Management</a></div>
-          <div class="mega-item"><a href="#">Project Management</a></div>
-          <div class="mega-item"><a href="#">Digital Transformation</a></div>
-          <div class="mega-item"><a href="#">Data Governance & Quality</a></div>
-          <div class="mega-item"><a href="#">MES & LIMS Integration</a></div>
+          <div class="mega-item"><a href="sap-erp.html">SAP / ERP Consulting</a></div>
+          <div class="mega-item"><a href="integration-management.html">Integration Management</a></div>
+          <div class="mega-item"><a href="project-management.html">Project Management</a></div>
+          <div class="mega-item"><a href="digital-transformation.html">Digital Transformation</a></div>
+          <div class="mega-item"><a href="data-governance.html">Data Governance & Quality</a></div>
+          <div class="mega-item"><a href="mes-lims.html">MES & LIMS Integration</a></div>
         </div>
       </li>
       <li class="nav-item">
-        <a href="#">Industries <span class="nav-chevron">▾</span></a>
+        <a href="#">Industries <span class="nav-chevron">›</span></a>
         <div class="mega">
-          <div class="mega-item"><a href="#">Pharmaceuticals & Life Sciences</a></div>
-          <div class="mega-item"><a href="#">Manufacturing</a></div>
-          <div class="mega-item"><a href="#">Chemicals</a></div>
-          <div class="mega-item"><a href="#">Medical Devices</a></div>
+          <div class="mega-item"><a href="pharma.html">Pharmaceuticals & Life Sciences</a></div>
+          <div class="mega-item"><a href="manufacturing.html">Manufacturing</a></div>
+          <div class="mega-item"><a href="chemicals.html">Chemicals</a></div>
+          <div class="mega-item"><a href="medical-devices.html">Medical Devices</a></div>
         </div>
       </li>
       <li class="nav-item">
-        <a href="#">Our Products <span class="nav-chevron">▾</span></a>
+        <a href="#">Our Products <span class="nav-chevron">›</span></a>
         <div class="mega">
-          <div class="mega-item"><a href="#">Batch Release Accelerator</a></div>
-          <div class="mega-item"><a href="#">Datalift</a></div>
+          <div class="mega-item"><a href="batch-release-accelerator.html">Batch Release Accelerator</a></div>
+          <div class="mega-item"><a href="datalift.html">Datalift</a></div>
         </div>
       </li>
-      <li class="nav-item"><a href="#">About</a></li>
-      <li class="nav-item"><a href="#">Careers</a></li>
+      <li class="nav-item"><a href="about.html">About Us</a></li>
+      <li class="nav-item"><a href="careers.html">Careers</a></li>
     </ul>
 
     <div class="nav-right">
@@ -820,6 +899,11 @@ footer {
           <line x1="10" y1="10" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
       </div>
+      <button class="nav-toggle" id="navToggle">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
       <a href="#contact" class="nav-btn">Contact us</a>
     </div>
   </div>
@@ -987,7 +1071,7 @@ footer {
       </ul>
     </div>
     <div class="footer-col">
-      <div class="footer-col-head">Industries</div>
+      <div class="footer-col-head">Industriesa</div>
       <ul>
         <li><a href="pharma.html">Pharma & Life Sciences</a></li>
         <li><a href="manufacturing.html">Manufacturing</a></li>
@@ -1154,6 +1238,47 @@ document.addEventListener('keydown', (e) => {
     modalOverlay.classList.remove('active');
   }
 });
+
+// ── MOBILE HAMBURGER MENU ──
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    navToggle.classList.toggle('open');
+    navLinks.classList.toggle('mobile-open');
+  });
+
+  // Handle submenu toggle on mobile
+  document.querySelectorAll('.nav-links .nav-item').forEach(item => {
+    const link = item.querySelector('a');
+    const mega = item.querySelector('.mega');
+    
+    if (mega) {
+      link.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('mobile-open')) {
+          e.preventDefault();
+          item.classList.toggle('open');
+        }
+      });
+    } else {
+      // Direct link - close menu
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('mobile-open');
+      });
+    }
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav') && navLinks.classList.contains('mobile-open')) {
+      navToggle.classList.remove('open');
+      navLinks.classList.remove('mobile-open');
+    }
+  });
+}
 </script>
 </body>
 </html>
