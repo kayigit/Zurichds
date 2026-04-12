@@ -457,10 +457,10 @@ img { display: block; max-width: 100%; }
 }
 .why-col:last-child { border-right: none; }
 .why-icon {
-  width: 48px; height: 48px; margin-bottom: 1.5rem;
-  border: 1px solid rgba(200,0,26,0.2);
+  width: 100%; height: 200px; margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
   display: flex; align-items: center; justify-content: center;
-  color: var(--red);
 }
 .why-title {
   font-family: 'Source Serif 4', serif;
@@ -1287,51 +1287,21 @@ footer {
     <div class="why-grid">
       <div class="why-col reveal">
         <div class="why-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 22 22">
-            <polygon points="11,2 20,20 2,20" stroke="#C8001A" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-            <line x1="11" y1="9" x2="11" y2="14" stroke="#C8001A" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="11" cy="17" r="1" fill="#C8001A"/>
-          </svg>
+          <img src="https://images.unsplash.com/photo-1590080876460-84f032884a22?w=400&h=400&fit=crop" alt="Swiss precision" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
         </div>
         <div class="why-title">Swiss precision,<br>every time.</div>
-        <ul class="why-list">
-          <li>Rigorous quality gates on every milestone</li>
-          <li>Zero-defect go-live methodology</li>
-          <li>Meticulous documentation & audit trails</li>
-          <li>GxP and CSV compliance built-in</li>
-        </ul>
       </div>
       <div class="why-col reveal" style="transition-delay:.15s">
         <div class="why-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 22 22">
-            <circle cx="11" cy="11" r="9" stroke="#C8001A" stroke-width="1.5"/>
-            <polyline points="7,11 10,14 15,8" stroke="#C8001A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <img src="https://images.unsplash.com/photo-1633356122544-f134324ef6db?w=400&h=400&fit=crop" alt="Deep SAP expertise" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
         </div>
         <div class="why-title">Deep SAP<br>expertise.</div>
-        <ul class="why-list">
-          <li>S/4HANA, ECC, BTP — all versions</li>
-          <li>SAP QM, MM, PP, FI/CO, SD</li>
-          <li>SAP Integration Suite & middleware</li>
-          <li>Certified SAP consultants on every team</li>
-        </ul>
       </div>
       <div class="why-col reveal" style="transition-delay:.3s">
         <div class="why-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 22 22">
-            <rect x="2" y="2" width="8" height="8" rx="1" stroke="#C8001A" stroke-width="1.5"/>
-            <rect x="12" y="2" width="8" height="8" rx="1" stroke="#C8001A" stroke-width="1.5"/>
-            <rect x="2" y="12" width="8" height="8" rx="1" stroke="#C8001A" stroke-width="1.5"/>
-            <rect x="12" y="12" width="8" height="8" rx="1" stroke="#C8001A" stroke-width="1.5"/>
-          </svg>
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop" alt="Industry-first approach" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
         </div>
         <div class="why-title">Industry-first<br>approach.</div>
-        <ul class="why-list">
-          <li>Pharma, MedTech & Life Sciences</li>
-          <li>Process manufacturing & chemicals</li>
-          <li>Consumer goods & retail</li>
-          <li>Regulatory-aware from day one</li>
-        </ul>
       </div>
     </div>
   </div>
