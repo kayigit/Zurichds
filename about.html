@@ -590,6 +590,7 @@ footer {
 .team-card {
   text-align: center; border: 1px solid var(--border); padding: 1.5rem;
   transition: border-color .2s, box-shadow .2s;
+  cursor: pointer;
 }
 .team-card:hover {
   border-color: var(--red);
@@ -704,6 +705,71 @@ footer {
   .team-name { font-size: 0.95rem; margin-bottom: 0.25rem; }
   footer { padding: 1.5rem 0.75rem 1rem; }
 }
+
+/* Team Modal */
+.team-modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(10,22,40,0.8); backdrop-filter: blur(4px);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+.team-modal-overlay.active {
+  display: flex; align-items: center; justify-content: center;
+}
+.team-modal {
+  background: white;
+  border-radius: 8px;
+  max-width: 600px; width: 90%;
+  max-height: 85vh; overflow-y: auto;
+  padding: 0;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+.team-modal-header {
+  position: relative;
+  background: linear-gradient(135deg, #0A1628 0%, #0D1E35 100%);
+  padding: 3rem 2rem 2rem;
+  color: white;
+  text-align: center;
+}
+.team-modal-close {
+  position: absolute; top: 1rem; right: 1.5rem;
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.1);
+  border: none; color: white; font-size: 24px;
+  cursor: pointer; border-radius: 4px;
+  transition: background .2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.team-modal-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+.team-modal-name {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.8rem; font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.team-modal-position {
+  font-size: 14px; color: rgba(255,255,255,0.8); letter-spacing: 0.08em;
+}
+.team-modal-body {
+  padding: 2rem;
+}
+.team-modal-section {
+  margin-bottom: 2rem;
+}
+.team-modal-section:last-child {
+  margin-bottom: 0;
+}
+.team-modal-section-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.2rem; font-weight: 400;
+  color: #0D1E35;
+  margin-bottom: 0.8rem;
+}
+.team-modal-section-text {
+  font-size: 14px; color: #555; line-height: 1.8;
+}
 </style>
 </head>
 <body>
@@ -786,7 +852,7 @@ footer {
   <div class="ps-label">Our team</div>
   <div class="ps-title">Meet the experts</div>
   <div class="team-grid">
-    <div class="team-card">
+    <div class="team-card" data-team="marcus">
       <div class="team-photo">
         <img src="https://picsum.photos/280/350?random=10" alt="Marcus Schneider">
       </div>
@@ -797,7 +863,7 @@ footer {
         S/4HANA implementations, ECC-to-HANA migrations, Global template rollouts
       </div>
     </div>
-    <div class="team-card">
+    <div class="team-card" data-team="anne">
       <div class="team-photo">
         <img src="https://picsum.photos/280/350?random=11" alt="Anne Müller">
       </div>
@@ -808,7 +874,7 @@ footer {
         Enterprise data quality, Regulatory compliance, MDM strategies
       </div>
     </div>
-    <div class="team-card">
+    <div class="team-card" data-team="stefan">
       <div class="team-photo">
         <img src="https://picsum.photos/280/350?random=12" alt="Stefan Keller">
       </div>
@@ -819,7 +885,7 @@ footer {
         SAP Integration Suite, iPaaS, API management, Middleware
       </div>
     </div>
-    <div class="team-card">
+    <div class="team-card" data-team="julia">
       <div class="team-photo">
         <img src="https://picsum.photos/280/350?random=13" alt="Julia Hoffmann">
       </div>
@@ -830,7 +896,7 @@ footer {
         Process optimization, Change management, Pharma/MedTech transformation
       </div>
     </div>
-    <div class="team-card">
+    <div class="team-card" data-team="thomas">
       <div class="team-photo">
         <img src="https://picsum.photos/280/350?random=14" alt="Thomas Büchel">
       </div>
@@ -881,6 +947,19 @@ footer {
   <a href="mailto:hello@zurichds.com" class="btn-green">Get in touch →</a>
 </div>
 </div>
+
+<!-- Team Modal -->
+<div class="team-modal-overlay" id="teamModalOverlay">
+  <div class="team-modal">
+    <div class="team-modal-header">
+      <button class="team-modal-close" id="teamModalClose">&times;</button>
+      <div class="team-modal-name" id="modalName"></div>
+      <div class="team-modal-position" id="modalPosition"></div>
+    </div>
+    <div class="team-modal-body" id="modalBody"></div>
+  </div>
+</div>
+
 <footer>
   <div class="footer-top">
     <div>
@@ -978,6 +1057,103 @@ document.querySelectorAll('a').forEach(a => {
 });
 document.querySelector('.logo-text') && (document.querySelector('.logo-text').closest('a, div').style.cursor='pointer');
 document.querySelector('.logo-mark').addEventListener('click', () => location.href='index.html');
+
+// Team Member Modal
+const teamData = {
+  marcus: {
+    name: 'Marcus Schneider',
+    position: 'Lead Director, SAP Consulting',
+    bio: 'Marcus brings 18+ years of SAP implementation experience, with a track record of delivering global S/4HANA transformations across the pharmaceuticals, chemicals and manufacturing sectors. He leads our consulting practice with a focus on quality and strategic delivery.',
+    expertise: 'S/4HANA implementations, ECC-to-HANA migrations, Global template rollouts, Enterprise architecture, Change management',
+    education: 'Dipl. Ing. Electrical Engineering, ETH Zurich',
+    certifications: 'SAP Certified Application Associate – SAP S/4HANA'
+  },
+  anne: {
+    name: 'Anne Müller',
+    position: 'Head of Data Governance',
+    bio: 'Anne specializes in enterprise data governance, quality frameworks and stewardship programs. With 16 years in regulated industries, she has designed and implemented governance structures for pharma, medtech and life sciences organizations.',
+    expertise: 'Enterprise data governance, Data quality frameworks, Master data management (MDM), Regulatory compliance (GxP, CSV), Stewardship models',
+    education: 'MSc Computer Science, University of Zurich',
+    certifications: 'IAIDQ Certified Data Governance Professional'
+  },
+  stefan: {
+    name: 'Stefan Keller',
+    position: 'Senior Integration Architect',
+    bio: 'Stefan is our lead integration architect with deep experience in enterprise middleware, API design and cloud-native integration patterns. He specializes in SAP Integration Suite and modern iPaaS architectures.',
+    expertise: 'SAP Integration Suite, iPaaS platforms, API management, Middleware (XI/PI), Cloud integration, REST/SOAP/EDI',
+    education: 'Dipl. Ing. Computer Science, UAS Bern',
+    certifications: 'SAP Certified Application Associate – SAP Integration Suite'
+  },
+  julia: {
+    name: 'Julia Hoffmann',
+    position: 'Digital Transformation Lead',
+    bio: 'Julia leads digital transformation initiatives with a focus on process optimization and change enablement. She has guided complex organizational transformations across pharma, manufacturing and consumer goods.',
+    expertise: 'Digital transformation roadmaps, Business process optimization, Change management, Organizational design, Training and enablement, Pharma/MedTech transformation',
+    education: 'MBA Business Administration, University of St. Gallen',
+    certifications: 'Certified Change Manager (APMG)'
+  },
+  thomas: {
+    name: 'Thomas Büchel',
+    position: 'Delivery Manager, Quality Assurance',
+    bio: 'Thomas ensures quality and compliance across all delivery engagements. With 14 years in regulated industries, he has managed go-lives, quality assurance and compliance programs for GxP-critical systems.',
+    expertise: 'GxP compliance frameworks, Test automation, Quality assurance, Go-live management, Risk and compliance, CSV/21 CFR Part 11',
+    education: 'MSc Pharmaceutical Sciences, University of Basel',
+    certifications: 'GXPQA Specialist, Certified Six Sigma Black Belt'
+  }
+};
+
+const modalOverlay = document.getElementById('teamModalOverlay');
+const modalClose = document.getElementById('teamModalClose');
+const modalName = document.getElementById('modalName');
+const modalPosition = document.getElementById('modalPosition');
+const modalBody = document.getElementById('modalBody');
+
+document.querySelectorAll('.team-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const team = card.getAttribute('data-team');
+    const data = teamData[team];
+    
+    if(data) {
+      modalName.textContent = data.name;
+      modalPosition.textContent = data.position;
+      modalBody.innerHTML = `
+        <div class="team-modal-section">
+          <div class="team-modal-section-title">About</div>
+          <div class="team-modal-section-text">${data.bio}</div>
+        </div>
+        <div class="team-modal-section">
+          <div class="team-modal-section-title">Expertise</div>
+          <div class="team-modal-section-text">${data.expertise}</div>
+        </div>
+        <div class="team-modal-section">
+          <div class="team-modal-section-title">Education</div>
+          <div class="team-modal-section-text">${data.education}</div>
+        </div>
+        <div class="team-modal-section">
+          <div class="team-modal-section-title">Certifications</div>
+          <div class="team-modal-section-text">${data.certifications}</div>
+        </div>
+      `;
+      modalOverlay.classList.add('active');
+    }
+  });
+});
+
+modalClose.addEventListener('click', () => {
+  modalOverlay.classList.remove('active');
+});
+
+modalOverlay.addEventListener('click', (e) => {
+  if(e.target === modalOverlay) {
+    modalOverlay.classList.remove('active');
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+    modalOverlay.classList.remove('active');
+  }
+});
 </script>
 </body>
 </html>
