@@ -491,6 +491,338 @@ footer {
   color: rgba(200,0,26,0.55); margin-top: 4px;
   font-family: "Inter", sans-serif; font-weight: 400;
 }
+
+/* ══════════════════════════════════════
+   MOBILE RESPONSIVE (max-width: 768px)
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+  
+  /* TOP BAR */
+  .topbar {
+    padding: 0.45rem 1rem;
+    gap: 1rem;
+    font-size: 11px;
+  }
+  .topbar a { font-size: 10px; }
+  
+  /* NAV */
+  .nav-inner {
+    padding: 0 1.25rem;
+    height: auto;
+    flex-wrap: wrap;
+  }
+  .nav-logo { margin-right: 1rem; }
+  .nav-links {
+    display: none; /* Hide on mobile, use hamburger in production */
+  }
+  .nav-right {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+  .nav-btn {
+    padding: 0.5rem 1rem;
+    font-size: 12px;
+  }
+  
+  /* HERO */
+  .hero {
+    min-height: 420px;
+  }
+  .hero-content {
+    padding: 2.5rem 1.25rem;
+  }
+  .hero-flower {
+    width: 100%;
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  #edelweiss {
+    width: min(250px, 60%);
+  }
+  .hero-geo {
+    width: 0; /* Hide geometric pattern on mobile */
+    display: none;
+  }
+  .hero-h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  .hero-body {
+    font-size: 15px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .btn-green, .btn-outline-w {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 13px;
+  }
+  
+  /* SERVICES */
+  .services {
+    padding: 3rem 0 0;
+  }
+  .section-head {
+    padding: 0 1.25rem 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .section-link {
+    margin-top: 1rem;
+  }
+  .svc-grid {
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--border);
+  }
+  .svc-tile {
+    padding: 2rem 1.25rem;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    min-height: auto;
+  }
+  .svc-tile:last-child {
+    border-bottom: none;
+  }
+  
+  /* INSIGHTS */
+  .insights {
+    padding: 3rem 0;
+  }
+  .insights-inner {
+    padding: 0 1.25rem;
+  }
+  .insights-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5px;
+    margin-top: 2rem;
+  }
+  .insight-img {
+    margin: -2rem -1.25rem 0;
+    width: calc(100% + 2.5rem);
+  }
+  .insight-card.featured .insight-img {
+    height: 200px;
+  }
+  .insight-title {
+    font-size: 1.1rem;
+  }
+  .insight-card.featured .insight-title {
+    font-size: 1.3rem;
+  }
+  
+  /* WHY ZDS */
+  .why { padding: 3rem 0; }
+  .why-inner { padding: 0 1.25rem; }
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 2rem;
+    border: none;
+  }
+  .why-col {
+    padding: 2rem 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .why-col:last-child {
+    border-bottom: none;
+  }
+  
+  /* CTA BAND */
+  .cta-band {
+    padding: 2rem 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .cta-band-text {
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  }
+  .btn-black {
+    width: 100%;
+    text-align: center;
+    padding: 0.85rem 1.5rem;
+    flex-shrink: auto;
+  }
+  
+  /* FOOTER */
+  footer {
+    padding: 2rem 1.25rem 1.5rem;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-bottom: 2rem;
+  }
+  .footer-brand { margin-bottom: 0.5rem; }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-legal {
+    gap: 1rem;
+    flex-direction: column;
+  }
+  .footer-legal a {
+    font-size: 11px;
+  }
+}
+
+/* ══════════════════════════════════════
+   EXTRA SMALL (max-width: 480px)
+══════════════════════════════════════ */
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  
+  .topbar { padding: 0.4rem 0.75rem; }
+  
+  .nav-inner {
+    padding: 0.5rem 0.75rem;
+    height: auto;
+  }
+  .logo-text {
+    font-size: 16px;
+  }
+  .logo-dots {
+    grid-template-columns: repeat(3, 6px);
+  }
+  .logo-dots span {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .hero {
+    min-height: 360px;
+  }
+  .hero-content {
+    padding: 2rem 0.75rem;
+  }
+  #edelweiss {
+    width: min(180px, 50%);
+  }
+  .hero-h1 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 0.75rem;
+    line-height: 1.15;
+  }
+  .hero-body {
+    font-size: 14px;
+    margin-bottom: 1rem;
+  }
+  .hero-tag {
+    font-size: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .section-head {
+    padding: 0 0.75rem 1.5rem;
+  }
+  .section-label {
+    font-size: 10px;
+  }
+  .section-h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+  }
+  
+  .svc-tile {
+    padding: 1.5rem 1rem;
+  }
+  .svc-num {
+    font-size: 10px;
+    margin-bottom: 1rem;
+  }
+  .svc-title {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+  .svc-desc {
+    font-size: 12px;
+  }
+  .svc-icon {
+    margin-bottom: 1rem;
+  }
+  
+  .insights-inner {
+    padding: 0 0.75rem;
+  }
+  .insight-card {
+    padding: 1.5rem;
+  }
+  .insight-title {
+    font-size: 1rem;
+  }
+  .insight-card.featured .insight-title {
+    font-size: 1.15rem;
+  }
+  .insight-body {
+    font-size: 12px;
+  }
+  .insight-img {
+    margin: -1.5rem -1.5rem 0;
+    width: calc(100% + 3rem);
+    height: 160px;
+  }
+  .insight-card.featured .insight-img {
+    height: 180px;
+  }
+  .img-placeholder {
+    font-size: 1.8rem;
+  }
+  
+  .why-inner { padding: 0 0.75rem; }
+  .why-col {
+    padding: 1.5rem 0;
+  }
+  .why-title {
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+  }
+  .why-list li {
+    font-size: 12px;
+    padding: 0.35rem 0;
+  }
+  
+  .cta-band {
+    padding: 1.5rem 0.75rem;
+  }
+  .cta-band-text {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+  }
+  .btn-black {
+    padding: 0.75rem 1.25rem;
+    font-size: 13px;
+  }
+  
+  footer {
+    padding: 1.5rem 0.75rem 1rem;
+  }
+  .footer-top {
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  .footer-col-head {
+    font-size: 10px;
+    margin-bottom: 1rem;
+  }
+  .footer-col ul li {
+    font-size: 12px;
+    padding: 0.25rem 0;
+  }
+  .footer-contact {
+    font-size: 12px;
+  }
+  .footer-copy {
+    font-size: 11px;
+  }
+}
 </style>
 </head>
 <body>

@@ -608,6 +608,51 @@ footer {
 .breadcrumb a:hover { color: rgba(255,255,255,0.7); }
 .reveal { opacity:0; transform:translateY(20px); transition: opacity .6s, transform .6s; }
 .reveal.up { opacity:1; transform:translateY(0); }
+
+/* ══════════════════════════════════════
+   MOBILE RESPONSIVE (max-width: 768px)
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+  .topbar { padding: 0.45rem 1rem; gap: 1rem; font-size: 11px; }
+  .topbar a { font-size: 10px; }
+  .nav-inner { padding: 0 1.25rem; height: auto; flex-wrap: wrap; }
+  .nav-logo { margin-right: 1rem; }
+  .nav-links { display: none; }
+  .nav-right { margin-left: 0; width: 100%; justify-content: flex-end; gap: 0.5rem; }
+  .nav-btn { padding: 0.5rem 1rem; font-size: 12px; }
+  .page-hero { padding: 4rem 1.25rem 2.5rem; }
+  .page-hero-inner { padding: 0; }
+  .page-hero-h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+  .section-head { padding: 0 1.25rem 2rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .section-link { margin-top: 1rem; }
+  .insights-inner { padding: 0 1.25rem; }
+  .insights-grid { grid-template-columns: 1fr; gap: 1.5px; margin-top: 2rem; }
+  .insight-card { padding: 1.5rem; }
+  .insight-title { font-size: 1.1rem; }
+  .insight-card.featured .insight-title { font-size: 1.3rem; }
+  .cta-band { padding: 2rem 1.25rem; flex-direction: column; gap: 1.5rem; }
+  .cta-band-text { font-size: clamp(1.3rem, 2.5vw, 1.7rem); }
+  .btn-black { width: 100%; text-align: center; padding: 0.85rem 1.5rem; }
+  footer { padding: 2rem 1.25rem 1.5rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 2rem; }
+}
+
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  .topbar { padding: 0.4rem 0.75rem; }
+  .nav-inner { padding: 0.5rem 0.75rem; }
+  .logo-text { font-size: 16px; }
+  .page-hero { padding: 2.5rem 0.75rem 2rem; }
+  .page-hero-h1 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.75rem; }
+  .page-hero-tag { font-size: 10px; margin-bottom: 1rem; }
+  .insight-card { padding: 1.5rem; }
+  .insight-title { font-size: 1rem; }
+  .insight-card.featured .insight-title { font-size: 1.15rem; }
+  .cta-band { padding: 1.5rem 0.75rem; }
+  .cta-band-text { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+  footer { padding: 1.5rem 0.75rem 1rem; }
+}
 </style>
 </head>
 <body>
