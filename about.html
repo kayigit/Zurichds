@@ -860,18 +860,33 @@ footer {
 
     <ul class="nav-links">
       <li class="nav-item"><a href="index.html">Home</a></li>
-      <li class="nav-item"><a href="sap-erp.html">SAP / ERP Consulting</a></li>
-      <li class="nav-item"><a href="integration-management.html">Integration Management</a></li>
-      <li class="nav-item"><a href="project-management.html">Project Management</a></li>
-      <li class="nav-item"><a href="digital-transformation.html">Digital Transformation</a></li>
-      <li class="nav-item"><a href="data-governance.html">Data Governance & Quality</a></li>
-      <li class="nav-item"><a href="mes-lims.html">MES & LIMS Integration</a></li>
-      <li class="nav-item"><a href="pharma.html">Pharmaceuticals & Life Sciences</a></li>
-      <li class="nav-item"><a href="manufacturing.html">Manufacturing</a></li>
-      <li class="nav-item"><a href="chemicals.html">Chemicals</a></li>
-      <li class="nav-item"><a href="medical-devices.html">Medical Devices</a></li>
-      <li class="nav-item"><a href="batch-release-accelerator.html">Batch Release Accelerator</a></li>
-      <li class="nav-item"><a href="datalift.html">Datalift</a></li>
+      <li class="nav-item">
+        <a href="#">Services <span class="nav-chevron">›</span></a>
+        <div class="mega">
+          <div class="mega-item"><a href="sap-erp.html">SAP / ERP Consulting</a></div>
+          <div class="mega-item"><a href="integration-management.html">Integration Management</a></div>
+          <div class="mega-item"><a href="project-management.html">Project Management</a></div>
+          <div class="mega-item"><a href="digital-transformation.html">Digital Transformation</a></div>
+          <div class="mega-item"><a href="data-governance.html">Data Governance & Quality</a></div>
+          <div class="mega-item"><a href="mes-lims.html">MES & LIMS Integration</a></div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#">Industries <span class="nav-chevron">›</span></a>
+        <div class="mega">
+          <div class="mega-item"><a href="pharma.html">Pharmaceuticals & Life Sciences</a></div>
+          <div class="mega-item"><a href="manufacturing.html">Manufacturing</a></div>
+          <div class="mega-item"><a href="chemicals.html">Chemicals</a></div>
+          <div class="mega-item"><a href="medical-devices.html">Medical Devices</a></div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#">Our Products <span class="nav-chevron">›</span></a>
+        <div class="mega">
+          <div class="mega-item"><a href="batch-release-accelerator.html">Batch Release Accelerator</a></div>
+          <div class="mega-item"><a href="datalift.html">Datalift</a></div>
+        </div>
+      </li>
       <li class="nav-item"><a href="about.html">About Us</a></li>
       <li class="nav-item"><a href="careers.html">Careers</a></li>
     </ul>
@@ -1234,13 +1249,25 @@ if (navToggle && navLinks) {
     navLinks.classList.toggle('mobile-open');
   });
 
-  // Close menu when clicking on a link
+  // Handle submenu toggle on mobile
   document.querySelectorAll('.nav-links .nav-item').forEach(item => {
     const link = item.querySelector('a');
-    link.addEventListener('click', () => {
-      navToggle.classList.remove('open');
-      navLinks.classList.remove('mobile-open');
-    });
+    const mega = item.querySelector('.mega');
+    
+    if (mega) {
+      link.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('mobile-open')) {
+          e.preventDefault();
+          item.classList.toggle('open');
+        }
+      });
+    } else {
+      // Direct link - close menu
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('mobile-open');
+      });
+    }
   });
 
   // Close menu when clicking outside
