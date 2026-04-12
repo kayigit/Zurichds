@@ -860,35 +860,20 @@ footer {
 
     <ul class="nav-links">
       <li class="nav-item"><a href="index.html">Home</a></li>
-      <li class="nav-item">
-        <a href="#">Services <span class="nav-chevron">▾</span></a>
-        <div class="mega">
-          <div class="mega-item"><a href="#">SAP / ERP Consulting</a></div>
-          <div class="mega-item"><a href="#">Integration Management</a></div>
-          <div class="mega-item"><a href="#">Project Management</a></div>
-          <div class="mega-item"><a href="#">Digital Transformation</a></div>
-          <div class="mega-item"><a href="#">Data Governance & Quality</a></div>
-          <div class="mega-item"><a href="#">MES & LIMS Integration</a></div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a href="#">Industries <span class="nav-chevron">▾</span></a>
-        <div class="mega">
-          <div class="mega-item"><a href="#">Pharmaceuticals & Life Sciences</a></div>
-          <div class="mega-item"><a href="#">Manufacturing</a></div>
-          <div class="mega-item"><a href="#">Chemicals</a></div>
-          <div class="mega-item"><a href="#">Medical Devices</a></div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a href="#">Our Products <span class="nav-chevron">▾</span></a>
-        <div class="mega">
-          <div class="mega-item"><a href="#">Batch Release Accelerator</a></div>
-          <div class="mega-item"><a href="#">Datalift</a></div>
-        </div>
-      </li>
-      <li class="nav-item"><a href="#">About</a></li>
-      <li class="nav-item"><a href="#">Careers</a></li>
+      <li class="nav-item"><a href="sap-erp.html">SAP / ERP Consulting</a></li>
+      <li class="nav-item"><a href="integration-management.html">Integration Management</a></li>
+      <li class="nav-item"><a href="project-management.html">Project Management</a></li>
+      <li class="nav-item"><a href="digital-transformation.html">Digital Transformation</a></li>
+      <li class="nav-item"><a href="data-governance.html">Data Governance & Quality</a></li>
+      <li class="nav-item"><a href="mes-lims.html">MES & LIMS Integration</a></li>
+      <li class="nav-item"><a href="pharma.html">Pharmaceuticals & Life Sciences</a></li>
+      <li class="nav-item"><a href="manufacturing.html">Manufacturing</a></li>
+      <li class="nav-item"><a href="chemicals.html">Chemicals</a></li>
+      <li class="nav-item"><a href="medical-devices.html">Medical Devices</a></li>
+      <li class="nav-item"><a href="batch-release-accelerator.html">Batch Release Accelerator</a></li>
+      <li class="nav-item"><a href="datalift.html">Datalift</a></li>
+      <li class="nav-item"><a href="about.html">About Us</a></li>
+      <li class="nav-item"><a href="careers.html">Careers</a></li>
     </ul>
 
     <div class="nav-right">
@@ -1249,19 +1234,13 @@ if (navToggle && navLinks) {
     navLinks.classList.toggle('mobile-open');
   });
 
-  // Handle submenu toggle in mobile
+  // Close menu when clicking on a link
   document.querySelectorAll('.nav-links .nav-item').forEach(item => {
     const link = item.querySelector('a');
-    const mega = item.querySelector('.mega');
-    
-    if (mega) {
-      link.addEventListener('click', (e) => {
-        if (navLinks.classList.contains('mobile-open')) {
-          e.preventDefault();
-          item.classList.toggle('open');
-        }
-      });
-    }
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('open');
+      navLinks.classList.remove('mobile-open');
+    });
   });
 
   // Close menu when clicking outside
