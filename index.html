@@ -1628,6 +1628,18 @@ if (navToggle && navLinks) {
   });
 }
 
+// ── SERVICE TILES CLICK HANDLER ──
+document.querySelectorAll('.svc-tile').forEach(tile => {
+  const titleElement = tile.querySelector('.svc-title');
+  const href = titleElement ? titleElement.getAttribute('href') : null;
+  
+  if (href) {
+    tile.addEventListener('click', () => {
+      window.location.href = href;
+    });
+  }
+});
+
 </script>
 </body>
 </html>
