@@ -791,9 +791,11 @@ footer {
   background: rgba(10,22,40,0.8); backdrop-filter: blur(4px);
   z-index: 1000;
   animation: fadeIn 0.3s ease;
+  pointer-events: none;
 }
 .team-modal-overlay.active {
   display: flex; align-items: center; justify-content: center;
+  pointer-events: auto;
 }
 .team-modal {
   background: white;
@@ -1310,9 +1312,12 @@ const modalPosition = document.getElementById('modalPosition');
 const modalBody = document.getElementById('modalBody');
 
 document.querySelectorAll('.team-card').forEach(card => {
-  card.addEventListener('click', () => {
+  card.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     const team = card.getAttribute('data-team');
     const data = teamData[team];
+    console.log('Team card clicked:', team, data);
     
     if(data) {
       modalName.textContent = data.name;
