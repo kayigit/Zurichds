@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP / ERP Consulting | Zurich Digital Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --red:     #C8001A;
+  --red-d:   #A80016;
+  --black:   #0A1628;
+  --dark:    #0D1E35;
+  --mid:     #1E3050;
+  --muted:   #767676;
+  --border:  #E0E0E0;
+  --bg:      #F5F5F5;
+  --white:   #FFFFFF;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ══════════════════════════════════════
+   TOP BAR
+══════════════════════════════════════ */
+.topbar {
+  background: #0A1628;
+  padding: 0.45rem 2.5rem;
+  display: flex; align-items: center; justify-content: flex-end;
+  gap: 1.5rem;
+}
+.topbar a {
+  font-size: 12px; color: rgba(255,255,255,0.65);
+  transition: color .2s;
+}
+.topbar a:hover { color: white; }
+.topbar-div { width: 1px; height: 12px; background: rgba(255,255,255,0.2); }
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+.nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 200;
+  box-shadow: 0 2px 8px rgba(10,22,40,0.06);
+}
+.nav-inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; align-items: stretch;
+  padding: 0 2.5rem;
+  height: 64px;
+}
+.nav-logo {
+  display: flex; align-items: center; margin-right: 3rem;
+  flex-shrink: 0;
+}
+.logo-mark {
+  display: flex; align-items: center; gap: 10px;
+}
+.logo-dots {
+  display: grid; grid-template-columns: repeat(5,8px);
+  gap: 3px;
+}
+.logo-dots span {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--red);
+  display: block;
+}
+.logo-dots span:nth-child(n+6) { background: rgba(200,0,26,0.15); }
+.logo-text {
+  font-size: 20px; font-weight: 600; color: var(--black); letter-spacing: -0.01em;
+  line-height: 1;
+}
+.logo-text span { color: var(--red); }
+.nav-links {
+  display: flex; align-items: stretch; flex: 1;
+  list-style: none; gap: 0;
+}
+.nav-item {
+  position: relative;
+}
+.nav-item > a {
+  display: flex; align-items: center; gap: 5px;
+  padding: 0 1.1rem;
+  font-size: 14px; font-weight: 500; color: var(--dark);
+  height: 100%;
+  transition: color .2s;
+  white-space: nowrap;
+}
+.nav-item > a::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px; background: var(--red);
+  transform: scaleX(0); transition: transform .2s;
+}
+.nav-item:hover > a { color: var(--black); }
+.nav-item:hover > a::after { transform: scaleX(1); }
+.nav-chevron {
+  font-size: 10px; transition: transform .2s;
+  color: var(--muted);
+}
+.nav-item:hover .nav-chevron { transform: rotate(180deg); }
+
+/* MEGA MENU */
+.mega {
+  position: absolute; top: 100%; left: -2rem;
+  background: white;
+  border-top: 3px solid var(--red);
+  box-shadow: 0 8px 32px rgba(10,22,40,0.12);
+  padding: 2rem 2.5rem;
+  display: none;
+  min-width: 520px;
+  z-index: 300;
+}
+.nav-item:hover .mega { display: grid; grid-template-columns: 1fr 1fr; gap: 0.25rem 2rem; }
+.mega-item {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: padding-left .2s;
+}
+.mega-item:hover { padding-left: 0.5rem; }
+.mega-item a { font-size: 13.5px; color: var(--mid); display: block; }
+.mega-item:hover a { color: var(--red-d); }
+
+.nav-right {
+  display: flex; align-items: center; gap: 0.75rem; margin-left: auto;
+}
+.nav-search {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background .2s;
+  color: var(--muted);
+}
+.nav-search:hover { background: var(--bg); }
+.nav-btn {
+  background: var(--red); color: white;
+  font-size: 13px; font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  transition: background .2s;
+  white-space: nowrap;
+}
+.nav-btn:hover { background: var(--red-d); }
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero {
+  background: #0A1628;
+  position: relative; overflow: hidden;
+  min-height: 560px;
+  display: flex; align-items: center;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(135deg, rgba(200,0,26,0.08) 0%, transparent 50%),
+    linear-gradient(to right, rgba(10,22,40,0.75) 35%, rgba(10,22,40,0.15) 100%);
+}
+/* Abstract geometric — Swiss precision feel */
+.hero-geo {
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 55%; overflow: hidden;
+}
+.hero-geo-inner {
+  position: absolute; inset: 0;
+  display: grid; grid-template-columns: repeat(8,1fr); grid-template-rows: repeat(6,1fr);
+  opacity: 0.12;
+}
+.geo-cell { border: 0.5px solid rgba(200,0,26,0.3); }
+.geo-cell.lit { background: rgba(200,0,26,0.06); }
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1400px; margin: 0 auto; width: 100%;
+  padding: 5rem 2.5rem;
+}
+.hero-tag {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 1.25rem;
+}
+.hero-h1 {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 300;
+  color: white; line-height: 1.08; max-width: 700px;
+  margin-bottom: 1.75rem; letter-spacing: -0.02em;
+}
+.hero-h1 strong { font-weight: 600; }
+.hero-h1 em { font-style: italic; color: rgba(255,255,255,0.75); }
+.hero-body {
+  font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.65);
+  max-width: 500px; line-height: 1.75; margin-bottom: 2.5rem;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-green {
+  background: var(--red); color: white;
+  font-size: 14px; font-weight: 500;
+  padding: 0.85rem 2rem;
+  transition: background .2s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-green:hover { background: var(--red-d); }
+.btn-outline-w {
+  border: 1.5px solid rgba(255,255,255,0.35); color: white;
+  font-size: 14px; font-weight: 400;
+  padding: 0.85rem 2rem;
+  transition: border-color .2s, background .2s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-outline-w:hover { border-color: white; background: rgba(255,255,255,0.06); }
+
+ to { transform: translateX(-50%); } }
+
+/* ══════════════════════════════════════
+   SERVICES
+══════════════════════════════════════ */
+.services {
+  padding: 20rem 0 0;
+}
+.section-head {
+  max-width: 1400px; margin: 0 auto;
+  padding: 0 2.5rem 3rem;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+.section-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 0.75rem;
+}
+.section-h2 {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 300;
+  color: var(--black); line-height: 1.15; letter-spacing: -0.01em;
+}
+.section-h2 em { font-style: italic; }
+.section-link {
+  font-size: 14px; font-weight: 500; color: var(--red);
+  display: flex; align-items: center; gap: 0.4rem;
+  transition: gap .2s;
+  white-space: nowrap; margin-bottom: 0.25rem;
+}
+.section-link:hover { gap: 0.7rem; }
+
+/* Service tiles — full-width row like ZDS */
+.svc-grid {
+  display: grid; grid-template-columns: repeat(6,1fr);
+  border-top: 1px solid var(--border);
+}
+.svc-tile {
+  padding: 2.5rem 2rem;
+  border-right: 1px solid var(--border);
+  position: relative; overflow: hidden;
+  cursor: pointer;
+  transition: background .25s;
+  min-height: 300px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.svc-tile:last-child { border-right: none; }
+.svc-tile::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 4px; background: var(--red);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s;
+}
+.svc-tile:hover::before { transform: scaleX(1); }
+.svc-tile:hover { background: var(--bg); }
+
+.svc-num {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.15em;
+  color: var(--red); margin-bottom: 1.5rem;
+}
+.svc-icon { margin-bottom: 1.5rem; }
+.svc-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.15rem; font-weight: 400; color: var(--black);
+  line-height: 1.3; margin-bottom: 0.85rem;
+}
+.svc-desc {
+  font-size: 12.5px; color: var(--muted); line-height: 1.65;
+  flex: 1;
+}
+.svc-arrow {
+  margin-top: 1.5rem; font-size: 13px; font-weight: 500;
+  color: var(--red); display: flex; align-items: center; gap: 0.3rem;
+  opacity: 0; transform: translateX(-6px);
+  transition: opacity .25s, transform .25s;
+}
+.svc-tile:hover .svc-arrow { opacity: 1; transform: translateX(0); }
+
+/* ══════════════════════════════════════
+   FEATURED INSIGHTS — editorial grid
+══════════════════════════════════════ */
+.insights { padding: 5rem 0; background: var(--bg); }
+.insights-inner { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; }
+.insights-grid {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 1.5px; background: var(--border);
+  margin-top: 3rem;
+}
+.insight-card {
+  background: white; padding: 2.5rem;
+  display: flex; flex-direction: column; gap: 1rem;
+  cursor: pointer; transition: box-shadow .25s;
+}
+.insight-card:hover { box-shadow: inset 0 4px 0 0 var(--red); }
+.insight-tag {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--red);
+}
+.insight-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.25rem; font-weight: 400; color: var(--black); line-height: 1.35;
+}
+.insight-card.featured .insight-title { font-size: 1.65rem; }
+.insight-body {
+  font-size: 13px; color: var(--muted); line-height: 1.7;
+  display: none;
+}
+.insight-card.featured .insight-body { display: block; }
+.insight-date { font-size: 12px; color: var(--muted); margin-top: auto; }
+.insight-img {
+  width: 100%; height: 200px; object-fit: cover;
+  background: linear-gradient(135deg, #0D1E35 0%, #1E3050 100%);
+  display: flex; align-items: center; justify-content: center;
+  margin: -2.5rem -2.5rem 0; width: calc(100% + 5rem);
+}
+.insight-card.featured .insight-img { height: 260px; }
+.img-placeholder {
+  font-family: 'Source Serif 4', serif;
+  font-size: 2.5rem; font-weight: 300; font-style: italic;
+  color: rgba(200,0,26,0.15); letter-spacing: -0.02em;
+}
+
+
+
+/* ══════════════════════════════════════
+   WHY ZDS — 3-col with icon list
+══════════════════════════════════════ */
+.why { padding: 5rem 0; background: #0A1628; }
+.why-inner {
+  max-width: 1400px; margin: 0 auto; padding: 0 2.5rem;
+}
+.why-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 0; margin-top: 3rem;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.why-col {
+  padding: 3rem 2.5rem;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+.why-col:last-child { border-right: none; }
+.why-icon {
+  width: 48px; height: 48px; margin-bottom: 1.5rem;
+  border: 1px solid rgba(200,0,26,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--red);
+}
+.why-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.3rem; font-weight: 400; color: white;
+  margin-bottom: 1rem; line-height: 1.25;
+}
+.why-list { list-style: none; }
+.why-list li {
+  font-size: 13px; color: rgba(255,255,255,0.45);
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; gap: 0.6rem;
+  transition: color .2s;
+}
+.why-list li:hover { color: rgba(255,255,255,0.8); }
+.why-list li::before { content: '—'; color: var(--red); flex-shrink: 0; font-size: 11px; }
+
+/* ══════════════════════════════════════
+   CTA BAND
+══════════════════════════════════════ */
+.cta-band {
+  background: var(--red);
+  padding: 4rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem;
+}
+.cta-band-text {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 300;
+  color: white; line-height: 1.2; max-width: 600px;
+}
+.cta-band-text strong { font-weight: 600; }
+.btn-black {
+  background: #0A1628; color: white;
+  font-size: 14px; font-weight: 500;
+  padding: 1rem 2.25rem;
+  white-space: nowrap;
+  transition: background .2s;
+  flex-shrink: 0;
+}
+.btn-black:hover { background: #0D1E35; }
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer {
+  background: #0A1628;
+  color: rgba(255,255,255,0.5);
+  padding: 4rem 2.5rem 2rem;
+}
+.footer-top {
+  max-width: 1400px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr;
+  gap: 3rem; padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand { margin-bottom: 1rem; }
+.footer-tagline {
+  font-size: 13px; line-height: 1.8;
+  color: rgba(255,255,255,0.35); max-width: 280px;
+  margin-bottom: 1.5rem;
+}
+.footer-contact { font-size: 13px; line-height: 2; color: rgba(255,255,255,0.35); }
+.footer-col-head {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.6); margin-bottom: 1.25rem;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li {
+  font-size: 13px; color: rgba(255,255,255,0.35);
+  padding: 0.3rem 0; cursor: pointer;
+  transition: color .2s;
+}
+.footer-col ul li:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 1.5rem; flex-wrap: wrap; gap: 1rem;
+}
+.footer-legal { display: flex; gap: 2rem; flex-wrap: wrap; }
+.footer-legal a { font-size: 12px; color: rgba(255,255,255,0.25); transition: color .2s; }
+.footer-legal a:hover { color: rgba(255,255,255,0.6); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+/* ══════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════ */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.up { opacity: 1; transform: translateY(0); }
+
+
+
+/* ── HERO FLOWER ── */
+.hero-flower {
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 52%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 1.5rem; z-index: 2; pointer-events: none;
+}
+#edelweiss {
+  width: min(400px, 80%); height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 20px 60px rgba(10,22,40,0.55));
+}
+.fl-stem    { transform: scaleY(0); transition: transform 0.7s cubic-bezier(0.34,1.56,0.64,1); transform-origin: 250px 420px; }
+.fl-bracts  { transform: scale(0) rotate(-25deg); transition: transform 0.8s cubic-bezier(0.34,1.56,0.64,1) 0.35s; transform-origin: 250px 250px; }
+.fl-florets { transform: scale(0); transition: transform 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.75s; transform-origin: 250px 250px; }
+.fl-ring    { transition: opacity 0.6s ease 1.15s; }
+.fl-ring2   { transition: opacity 0.6s ease 1.35s; }
+.flower-bloomed .fl-stem    { transform: scaleY(1); }
+.flower-bloomed .fl-bracts  { transform: scale(1) rotate(0deg); }
+.flower-bloomed .fl-florets { transform: scale(1); }
+.flower-bloomed .fl-ring    { opacity: 0.18; }
+.flower-bloomed .fl-ring2   { opacity: 0.08; }
+@keyframes sway {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50%       { transform: rotate(1.5deg); }
+}
+.flower-bloomed #edelweiss { animation: sway 6s ease-in-out infinite; transform-origin: 250px 420px; }
+.flower-label { text-align: center; opacity: 0; transition: opacity 0.6s ease 1.45s; }
+.flower-bloomed .flower-label { opacity: 1; }
+.flower-name {
+  display: block; font-family: "Source Serif 4", serif;
+  font-size: 1.05rem; font-style: italic; font-weight: 300;
+  color: rgba(255,255,255,0.45); letter-spacing: 0.06em;
+}
+.flower-sub {
+  display: block; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(200,0,26,0.55); margin-top: 4px;
+  font-family: "Inter", sans-serif; font-weight: 400;
+}
+
+/* Page-specific */
+.page-hero {
+  background: #0A1628;
+  padding: 9rem 2.5rem 5rem;
+  position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(200,0,26,0.07) 0%, transparent 60%);
+}
+.page-hero-inner {
+  max-width: 1400px; margin: 0 auto; position: relative; z-index: 2;
+}
+.page-hero-tag {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.page-hero-tag::before {
+  content: ''; display: block; width: 28px; height: 1px; background: var(--red);
+}
+.page-hero-h1 {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 300;
+  color: white; line-height: 1.1; max-width: 750px;
+  letter-spacing: -0.02em; margin-bottom: 1.5rem;
+}
+.page-hero-h1 em { font-style: italic; color: rgba(255,255,255,0.7); }
+.page-hero-sub {
+  font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.55);
+  max-width: 580px; line-height: 1.75;
+}
+.page-body {
+  max-width: 1400px; margin: 0 auto; padding: 5rem 2.5rem;
+}
+.page-section {
+  margin-bottom: 5rem;
+  padding-bottom: 5rem;
+  border-bottom: 1px solid var(--border);
+}
+.page-section:last-child { border-bottom: none; }
+.ps-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 1rem;
+}
+.ps-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300;
+  color: var(--black); line-height: 1.15; margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+.ps-title em { font-style: italic; }
+.ps-body {
+  font-size: 15px; line-height: 1.85; color: #555; max-width: 720px;
+  font-weight: 300;
+}
+.ps-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem;
+}
+.ps-card {
+  padding: 2rem; border: 1px solid var(--border);
+  transition: border-color .2s, box-shadow .2s;
+}
+.ps-card:hover {
+  border-color: var(--red);
+  box-shadow: 0 4px 20px rgba(200,0,26,0.08);
+}
+.ps-card-num {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+  color: var(--red); margin-bottom: 0.75rem;
+}
+.ps-card-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1rem; font-weight: 400; color: var(--black);
+  margin-bottom: 0.6rem; line-height: 1.3;
+}
+.ps-card-desc {
+  font-size: 13px; color: #777; line-height: 1.65;
+}
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+}
+.stat-row {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
+  border: 1px solid var(--border); margin-top: 2.5rem;
+}
+.stat-box {
+  padding: 2rem 1.5rem; border-right: 1px solid var(--border); text-align: center;
+}
+.stat-box:last-child { border-right: none; }
+.stat-box-val {
+  font-family: 'Source Serif 4', serif;
+  font-size: 2.5rem; font-weight: 300; color: var(--red); line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.stat-box-label { font-size: 12px; color: #888; line-height: 1.4; }
+.cta-box {
+  background: #0A1628; padding: 4rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+  margin-top: 3rem;
+}
+.cta-box-text {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.6rem; font-weight: 300; color: white; line-height: 1.3; max-width: 500px;
+}
+.cta-box-text strong { font-weight: 600; }
+.breadcrumb {
+  font-size: 12px; color: rgba(255,255,255,0.35);
+  margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; }
+.breadcrumb a:hover { color: rgba(255,255,255,0.7); }
+.reveal { opacity:0; transform:translateY(20px); transition: opacity .6s, transform .6s; }
+.reveal.up { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="logo-mark">
+        <div class="logo-text">ZDS<span style="color:#C8001A">.</span></div>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li class="nav-item">
+        <a href="#">Services <span class="nav-chevron">▾</span></a>
+        <div class="mega">
+          <div class="mega-item"><a href="#">SAP / ERP Consulting</a></div>
+          <div class="mega-item"><a href="#">Integration Management</a></div>
+          <div class="mega-item"><a href="#">Project Management</a></div>
+          <div class="mega-item"><a href="#">Digital Transformation</a></div>
+          <div class="mega-item"><a href="#">Data Governance & Quality</a></div>
+          <div class="mega-item"><a href="#">MES & LIMS Integration</a></div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#">Industries <span class="nav-chevron">▾</span></a>
+        <div class="mega">
+          <div class="mega-item"><a href="#">Pharmaceuticals & Life Sciences</a></div>
+          <div class="mega-item"><a href="#">Manufacturing</a></div>
+          <div class="mega-item"><a href="#">Chemicals</a></div>
+          <div class="mega-item"><a href="#">Medical Devices</a></div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#">Our Products <span class="nav-chevron">▾</span></a>
+        <div class="mega">
+          <div class="mega-item"><a href="#">Batch Release Accelerator</a></div>
+          <div class="mega-item"><a href="#">Datalift</a></div>
+        </div>
+      </li>
+      <li class="nav-item"><a href="#">About</a></li>
+      <li class="nav-item"><a href="#">Careers</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <div class="nav-search">
+        <svg width="16" height="16" fill="none" viewBox="0 0 16 16">
+          <circle cx="6.5" cy="6.5" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="10" y1="10" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <a href="#contact" class="nav-btn">Contact us</a>
+    </div>
+  </div>
+</header>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> <span>›</span> <span style="color:rgba(255,255,255,0.6)">SAP / ERP Consulting</span>
+    </div>
+    <div class="page-hero-tag">Services · SAP</div>
+    <h1 class="page-hero-h1">SAP / ERP Consulting</h1>
+    <p class="page-hero-sub">End-to-end SAP implementation, upgrade and optimization — from S/4HANA blueprinting to hypercare.</p>
+  </div>
+</section>
+<div class="page-body">
+
+<div class="page-section reveal">
+  <div class="ps-label">What we deliver</div>
+  <div class="two-col">
+    <div>
+      <div class="ps-title">Your SAP journey,<br><em>precisely managed.</em></div>
+      <div class="ps-body">We guide organizations through every phase of the SAP lifecycle — from initial business case and system selection through implementation, go-live and continuous optimization. Our certified consultants bring deep industry knowledge and hands-on SAP expertise to every engagement.</div>
+    </div>
+    <div class="ps-body" style="padding-top:0.5rem">
+      <p style="margin-bottom:1rem">With over 18 years of SAP experience across pharma, manufacturing and chemicals, we understand the complexity of regulated environments and deliver solutions that meet both business and compliance requirements.</p>
+      <p>Whether you're migrating from ECC to S/4HANA, implementing a greenfield system, or optimizing an existing landscape — we have the expertise to deliver with Swiss precision.</p>
+    </div>
+  </div>
+</div>
+<div class="page-section reveal">
+  <div class="ps-label">Service areas</div>
+  <div class="ps-title">Core capabilities</div>
+  <div class="ps-grid">
+    <div class="ps-card"><div class="ps-card-num">01</div><div class="ps-card-title">S/4HANA Migration</div><div class="ps-card-desc">Brownfield, greenfield and selective data transition strategies tailored to your business and timeline.</div></div>
+    <div class="ps-card"><div class="ps-card-num">02</div><div class="ps-card-title">SAP QM</div><div class="ps-card-desc">Quality Management configuration for regulated industries — inspection planning, usage decisions, batch release.</div></div>
+    <div class="ps-card"><div class="ps-card-num">03</div><div class="ps-card-title">SAP MM / PP</div><div class="ps-card-desc">Materials management and production planning aligned with your manufacturing processes and supply chain.</div></div>
+    <div class="ps-card"><div class="ps-card-num">04</div><div class="ps-card-title">SAP FI / CO</div><div class="ps-card-desc">Financial accounting and controlling configuration supporting group reporting and regulatory compliance.</div></div>
+    <div class="ps-card"><div class="ps-card-num">05</div><div class="ps-card-title">Post Go-Live Support</div><div class="ps-card-desc">Hypercare, application management and continuous improvement to maximize your SAP investment.</div></div>
+    <div class="ps-card"><div class="ps-card-num">06</div><div class="ps-card-title">SAP BTP</div><div class="ps-card-desc">Business Technology Platform extensions, side-by-side applications and cloud integration scenarios.</div></div>
+  </div>
+</div>
+<div class="page-section reveal">
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-box-val">80+</div><div class="stat-box-label">SAP implementations delivered</div></div>
+    <div class="stat-box"><div class="stat-box-val">18+</div><div class="stat-box-label">Years SAP experience</div></div>
+    <div class="stat-box"><div class="stat-box-val">100%</div><div class="stat-box-label">Go-live success rate</div></div>
+    <div class="stat-box"><div class="stat-box-val">5</div><div class="stat-box-label">SAP modules expertise</div></div>
+  </div>
+</div>
+<div class="cta-box reveal">
+  <div class="cta-box-text">Ready to start your <strong>SAP transformation?</strong></div>
+  <a href="mailto:hello@zurichds.com" class="btn-green">Talk to an expert →</a>
+</div>
+</div>
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">
+        <div class="logo-mark">
+          <div class="logo-text" style="color:white;font-size:18px">ZDS<span style="color:#C8001A">.</span></div>
+        </div>
+      </div>
+      <div class="footer-tagline">Zurich Digital Solutions AG — precision SAP and digital consulting, engineered in Switzerland and deployed globally.</div>
+      <div class="footer-contact">
+        Binzmühlestrasse 99, 8050 Zürich<br>
+        hello@zurichds.com<br>
+        +41 44 000 00 00
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-head">Services</div>
+      <ul>
+        <li>SAP / ERP Consulting</li>
+        <li>Integration Management</li>
+        <li>Project Management</li>
+        <li>Digital Transformation</li>
+        <li>Data Governance & Quality</li>
+        <li>MES & LIMS Integration</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-head">Industries</div>
+      <ul>
+        <li>Pharma & Life Sciences</li>
+        <li>Manufacturing</li>
+        <li>Chemicals</li>
+        <li>Medical Devices</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-head">Company</div>
+      <ul>
+        <li>About us</li>
+        <li>Leadership</li>
+        <li>Careers</li>
+        <li>Press</li>
+        <li>Sustainability</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-head">Connect</div>
+      <ul>
+        <li>LinkedIn</li>
+        <li>XING</li>
+        <li>Insights</li>
+        <li>Newsletter</li>
+        <li>Events</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Legal</a>
+      <a href="#">Cookie settings</a>
+      <a href="#">Sitemap</a>
+    </div>
+    <div class="footer-copy">© 2026 Zurich Digital Solutions AG · www.zurichds.com · All rights reserved.</div>
+  </div>
+</footer>
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('up'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+// Update nav links to point to pages
+const pageMap = {
+  'SAP / ERP Consulting': 'sap-erp.html',
+  'Integration Management': 'integration-management.html',
+  'Project Management': 'project-management.html',
+  'Digital Transformation': 'digital-transformation.html',
+  'Data Governance & Quality': 'data-governance.html',
+  'MES & LIMS Integration': 'mes-lims.html',
+  'Pharmaceuticals & Life Sciences': 'pharma.html',
+  'Manufacturing': 'manufacturing.html',
+  'Chemicals': 'chemicals.html',
+  'Medical Devices': 'medical-devices.html',
+  'Batch Release Accelerator': 'batch-release-accelerator.html',
+  'Datalift': 'datalift.html',
+  'About': 'about.html',
+  'Careers': 'careers.html',
+};
+document.querySelectorAll('a').forEach(a => {
+  const txt = a.textContent.trim();
+  if(pageMap[txt]) a.href = pageMap[txt];
+  if(txt === 'Services' || txt === 'Industries' || txt === 'Our Products') a.href = '#';
+  if(a.href.includes('index.html') || a.textContent.includes('ZDS') || a.querySelector('.logo-text')) 
+    a.href = 'index.html';
+});
+document.querySelector('.logo-text') && (document.querySelector('.logo-text').closest('a, div').style.cursor='pointer');
+document.querySelector('.logo-mark').addEventListener('click', () => location.href='index.html');
+</script>
+</body>
+</html>
