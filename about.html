@@ -1305,61 +1305,82 @@ const teamData = {
   }
 };
 
-const modalOverlay = document.getElementById('teamModalOverlay');
-const modalClose = document.getElementById('teamModalClose');
-const modalName = document.getElementById('modalName');
-const modalPosition = document.getElementById('modalPosition');
-const modalBody = document.getElementById('modalBody');
+// Wait for DOM to be fully ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initTeamModal);
+} else {
+  initTeamModal();
+}
 
-document.querySelectorAll('.team-card').forEach(card => {
-  card.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const team = card.getAttribute('data-team');
-    const data = teamData[team];
-    console.log('Team card clicked:', team, data);
-    
-    if(data) {
-      modalName.textContent = data.name;
-      modalPosition.textContent = data.position;
-      modalBody.innerHTML = `
-        <div class="team-modal-section">
-          <div class="team-modal-section-title">About</div>
-          <div class="team-modal-section-text">${data.bio}</div>
-        </div>
-        <div class="team-modal-section">
-          <div class="team-modal-section-title">Expertise</div>
-          <div class="team-modal-section-text">${data.expertise}</div>
-        </div>
-        <div class="team-modal-section">
-          <div class="team-modal-section-title">Education</div>
-          <div class="team-modal-section-text">${data.education}</div>
-        </div>
-        <div class="team-modal-section">
-          <div class="team-modal-section-title">Certifications</div>
-          <div class="team-modal-section-text">${data.certifications}</div>
-        </div>
-      `;
-      modalOverlay.classList.add('active');
+function initTeamModal() {
+  const modalOverlay = document.getElementById('teamModalOverlay');
+  const modalClose = document.getElementById('teamModalClose');
+  const modalName = document.getElementById('modalName');
+  const modalPosition = document.getElementById('modalPosition');
+  const modalBody = document.getElementById('modalBody');
+
+  if (!modalOverlay || !modalClose || !modalName || !modalPosition || !modalBody) {
+    console.error('Modal elements not found:', { modalOverlay, modalClose, modalName, modalPosition, modalBody });
+    return;
+  }
+
+  const teamCards = document.querySelectorAll('.team-card');
+  console.log('Found team cards:', teamCards.length);
+
+  teamCards.forEach(card => {
+    card.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const team = this.getAttribute('data-team');
+      const data = teamData[team];
+      console.log('Team card clicked:', team, data);
+      
+      if(data) {
+        modalName.textContent = data.name;
+        modalPosition.textContent = data.position;
+        modalBody.innerHTML = `
+          <div class="team-modal-section">
+            <div class="team-modal-section-title">About</div>
+            <div class="team-modal-section-text">${data.bio}</div>
+          </div>
+          <div class="team-modal-section">
+            <div class="team-modal-section-title">Expertise</div>
+            <div class="team-modal-section-text">${data.expertise}</div>
+          </div>
+          <div class="team-modal-section">
+            <div class="team-modal-section-title">Education</div>
+            <div class="team-modal-section-text">${data.education}</div>
+          </div>
+          <div class="team-modal-section">
+            <div class="team-modal-section-title">Certifications</div>
+            <div class="team-modal-section-text">${data.certifications}</div>
+          </div>
+        `;
+        console.log('Adding active class to modal');
+        modalOverlay.classList.add('active');
+      }
+    });
+  });
+
+  modalClose.addEventListener('click', function() {
+    console.log('Close button clicked');
+    modalOverlay.classList.remove('active');
+  });
+
+  modalOverlay.addEventListener('click', function(e) {
+    if(e.target === modalOverlay) {
+      console.log('Overlay clicked');
+      modalOverlay.classList.remove('active');
     }
   });
-});
 
-modalClose.addEventListener('click', () => {
-  modalOverlay.classList.remove('active');
-});
-
-modalOverlay.addEventListener('click', (e) => {
-  if(e.target === modalOverlay) {
-    modalOverlay.classList.remove('active');
-  }
-});
-
-document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-    modalOverlay.classList.remove('active');
-  }
-});
+  document.addEventListener('keydown', function(e) {
+    if(e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+      console.log('Escape pressed');
+      modalOverlay.classList.remove('active');
+    }
+  });
+}
 
 // ── CONTACT BUTTON FIX ──
 const contactBtn = document.querySelector('a.nav-btn[href="#contact"]');
