@@ -486,12 +486,13 @@ img { display: block; max-width: 100%; }
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.45;
+  opacity: 0.85;
+  filter: brightness(1.1) saturate(0.75);
   transition: transform .7s cubic-bezier(0.25,0.46,0.45,0.94), opacity .4s;
 }
 .svc-tile:hover .svc-photo {
   transform: scale(1.06);
-  opacity: 0.6;
+  opacity: 1;
 }
 
 /* Gradient overlay */
@@ -501,9 +502,9 @@ img { display: block; max-width: 100%; }
   inset: 0;
   background: linear-gradient(
     to top,
-    #0A1628 0%,
-    rgba(10,22,40,0.75) 45%,
-    rgba(10,22,40,0.15) 100%
+    rgba(10,22,40,0.82) 0%,
+    rgba(10,22,40,0.35) 40%,
+    rgba(10,22,40,0.05) 100%
   );
   z-index: 1;
   transition: opacity .4s;
@@ -653,10 +654,11 @@ img { display: block; max-width: 100%; }
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.45;
+  opacity: 0.85;
+  filter: brightness(1.1) saturate(0.75);
   transition: transform .7s cubic-bezier(0.25,0.46,0.45,0.94), opacity .4s;
 }
-.why-col:hover .why-photo { transform: scale(1.06); opacity: 0.6; }
+.why-col:hover .why-photo { transform: scale(1.06); opacity: 1; }
 
 .why-col::after {
   content: '';
@@ -664,9 +666,9 @@ img { display: block; max-width: 100%; }
   inset: 0;
   background: linear-gradient(
     to top,
-    #0A1628 0%,
-    rgba(10,22,40,0.75) 45%,
-    rgba(10,22,40,0.15) 100%
+    rgba(10,22,40,0.82) 0%,
+    rgba(10,22,40,0.35) 40%,
+    rgba(10,22,40,0.05) 100%
   );
   z-index: 1;
 }
@@ -1369,7 +1371,7 @@ footer {
   <div class="svc-grid">
 
     <div class="svc-tile reveal" data-href="sap-erp.html">
-      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&fit=crop')"></div>
+      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&fit=crop')"></div>
       <div class="svc-num">01</div>
       <div class="svc-content">
         <div class="svc-title">SAP / ERP Consulting</div>
@@ -1379,7 +1381,7 @@ footer {
     </div>
 
     <div class="svc-tile reveal" style="transition-delay:.08s" data-href="integration-management.html">
-      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&fit=crop')"></div>
+      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80&fit=crop')"></div>
       <div class="svc-num">02</div>
       <div class="svc-content">
         <div class="svc-title">Integration Management</div>
@@ -1389,7 +1391,7 @@ footer {
     </div>
 
     <div class="svc-tile reveal" style="transition-delay:.16s" data-href="project-management.html">
-      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&fit=crop')"></div>
+      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80&fit=crop')"></div>
       <div class="svc-num">03</div>
       <div class="svc-content">
         <div class="svc-title">Project Management</div>
@@ -1399,7 +1401,7 @@ footer {
     </div>
 
     <div class="svc-tile reveal" style="transition-delay:.24s" data-href="digital-transformation.html">
-      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80&fit=crop')"></div>
+      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&fit=crop')"></div>
       <div class="svc-num">04</div>
       <div class="svc-content">
         <div class="svc-title">Digital Transformation</div>
@@ -1409,7 +1411,7 @@ footer {
     </div>
 
     <div class="svc-tile reveal" style="transition-delay:.32s" data-href="data-governance.html">
-      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&fit=crop')"></div>
+      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80&fit=crop')"></div>
       <div class="svc-num">05</div>
       <div class="svc-content">
         <div class="svc-title">Data Governance & Quality</div>
@@ -1419,7 +1421,7 @@ footer {
     </div>
 
     <div class="svc-tile reveal" style="transition-delay:.4s" data-href="mes-lims.html">
-      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=800&q=80&fit=crop')"></div>
+      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80&fit=crop')"></div>
       <div class="svc-num">06</div>
       <div class="svc-content">
         <div class="svc-title">MES & LIMS Integration</div>
@@ -1440,13 +1442,13 @@ footer {
   </div>
   <div class="why-grid">
     <div class="why-col reveal">
-      <div class="why-photo" style="background-image:url('https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=900&q=80&fit=crop')"></div>
+      <div class="why-photo" style="background-image:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=900&q=80&fit=crop')"></div>
       <div class="why-content">
         <div class="why-title">Swiss precision,<br>every time.</div>
       </div>
     </div>
     <div class="why-col reveal" style="transition-delay:.15s">
-      <div class="why-photo" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=900&q=80&fit=crop')"></div>
+      <div class="why-photo" style="background-image:url('https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=900&q=80&fit=crop')"></div>
       <div class="why-content">
         <div class="why-title">Deep SAP<br>expertise.</div>
       </div>
