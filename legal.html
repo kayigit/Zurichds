@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal Notice | Zurich Digital Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:     #C8001A;
+  --red-d:   #A80016;
+  --black:   #0A1628;
+  --dark:    #0D1E35;
+  --mid:     #1E3050;
+  --muted:   #767676;
+  --border:  #E0E0E0;
+  --bg:      #F5F5F5;
+  --white:   #FFFFFF;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+.nav { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 8px rgba(10,22,40,0.06); }
+.nav-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: stretch; padding: 0 2.5rem; height: 64px; }
+.nav-logo { display: flex; align-items: center; margin-right: 3rem; flex-shrink: 0; }
+.logo-mark { display: flex; align-items: center; gap: 10px; }
+.logo-text { font-size: 20px; font-weight: 600; color: var(--black); letter-spacing: -0.01em; line-height: 1; }
+.logo-text span { color: var(--red); }
+.nav-links { display: flex; align-items: stretch; flex: 1; list-style: none; gap: 0; }
+.nav-item { position: relative; }
+.nav-item > a { display: flex; align-items: center; gap: 5px; padding: 0 1.1rem; font-size: 14px; font-weight: 500; color: var(--dark); height: 100%; transition: color .2s; white-space: nowrap; }
+.nav-item > a::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--red); transform: scaleX(0); transition: transform .2s; }
+.nav-item:hover > a { color: var(--black); }
+.nav-item:hover > a::after { transform: scaleX(1); }
+.nav-chevron { font-size: 10px; transition: transform .2s; color: var(--muted); }
+.nav-item:hover .nav-chevron { transform: rotate(180deg); }
+.mega { position: absolute; top: 100%; left: -2rem; background: white; border-top: 3px solid var(--red); box-shadow: 0 8px 32px rgba(10,22,40,0.12); padding: 2rem 2.5rem; display: none; min-width: 520px; z-index: 300; }
+.nav-item:hover .mega { display: grid; grid-template-columns: 1fr 1fr; gap: 0.25rem 2rem; }
+.mega-item { padding: 0.6rem 0; border-bottom: 1px solid var(--border); transition: padding-left .2s; }
+.mega-item:hover { padding-left: 0.5rem; }
+.mega-item a { font-size: 13.5px; color: var(--mid); display: block; }
+.mega-item:hover a { color: var(--red-d); }
+.nav-right { display: flex; align-items: center; gap: 0.75rem; margin-left: auto; }
+.nav-search { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s; color: var(--muted); }
+.nav-search:hover { background: var(--bg); }
+.nav-btn { background: var(--red); color: white; font-size: 13px; font-weight: 500; padding: 0.5rem 1.25rem; transition: background .2s; white-space: nowrap; }
+.nav-btn:hover { background: var(--red-d); }
+.nav-toggle { display: none; flex-direction: column; width: 32px; height: 32px; border: none; background: transparent; cursor: pointer; padding: 0; gap: 5px; align-items: center; justify-content: center; }
+.hamburger-line { width: 24px; height: 2px; background: var(--dark); display: block; transition: all 0.3s ease; }
+.nav-toggle.open .hamburger-line:nth-child(1) { transform: rotate(45deg) translateY(11px); }
+.nav-toggle.open .hamburger-line:nth-child(2) { opacity: 0; }
+.nav-toggle.open .hamburger-line:nth-child(3) { transform: rotate(-45deg) translateY(-11px); }
+.nav-links.mobile-open { display: flex !important; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; border-bottom: 1px solid var(--border); box-shadow: 0 4px 12px rgba(10,22,40,0.1); gap: 0; z-index: 300; }
+.nav-links.mobile-open .nav-item { width: 100%; border-bottom: 1px solid var(--border); }
+.nav-links.mobile-open .nav-item > a { padding: 1rem 1.25rem; display: block; }
+.nav-links.mobile-open .mega { position: static; background: var(--bg); border-top: none; box-shadow: none; padding: 0 1.25rem 1rem; min-width: auto; grid-template-columns: 1fr; gap: 0; display: none; }
+.nav-links.mobile-open .nav-item.open .mega { display: grid; }
+.nav-links.mobile-open .mega-item { padding: 0.5rem 0; border-bottom: none; }
+.page-hero { background: #0A1628; padding: 9rem 2.5rem 5rem; position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(200,0,26,0.07) 0%, transparent 60%); }
+.page-hero-inner { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+.page-hero-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.75rem; }
+.page-hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--red); }
+.page-hero-h1 { font-family: 'Source Serif 4', serif; font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 300; color: white; line-height: 1.1; max-width: 750px; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+.page-hero-sub { font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.55); max-width: 580px; line-height: 1.75; }
+.breadcrumb { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.breadcrumb a { color: rgba(255,255,255,0.35); }
+.breadcrumb a:hover { color: rgba(255,255,255,0.7); }
+.page-body { max-width: 900px; margin: 0 auto; padding: 5rem 2.5rem; }
+.page-section { margin-bottom: 3.5rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--border); }
+.page-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.ps-label { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 0.75rem; }
+.ps-title { font-family: 'Source Serif 4', serif; font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 300; color: var(--black); line-height: 1.2; margin-bottom: 1.25rem; }
+.ps-body { font-size: 15px; line-height: 1.85; color: #555; font-weight: 300; }
+.ps-body p { margin-bottom: 1rem; }
+.ps-body p:last-child { margin-bottom: 0; }
+.ps-body ul { padding-left: 1.25rem; margin: 1rem 0; }
+.ps-body ul li { margin-bottom: 0.5rem; }
+.ps-body strong { color: var(--dark); font-weight: 500; }
+.ps-body a { color: var(--red); }
+.ps-body a:hover { text-decoration: underline; }
+.info-box { background: var(--bg); border-left: 3px solid var(--red); padding: 1.5rem 1.75rem; margin: 1.5rem 0; }
+.info-box p { font-size: 14px; color: var(--dark); line-height: 1.9; margin: 0; }
+.info-box strong { font-weight: 600; }
+.detail-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+.detail-table tr { border-bottom: 1px solid var(--border); }
+.detail-table tr:last-child { border-bottom: none; }
+.detail-table td { padding: 0.85rem 0; font-size: 14px; vertical-align: top; }
+.detail-table td:first-child { color: var(--muted); font-weight: 500; width: 220px; }
+.detail-table td:last-child { color: var(--dark); }
+footer { background: #0A1628; color: rgba(255,255,255,0.5); padding: 4rem 2.5rem 2rem; }
+.footer-top { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.footer-brand { margin-bottom: 1rem; }
+.footer-tagline { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.35); max-width: 280px; margin-bottom: 1.5rem; }
+.footer-contact { font-size: 13px; line-height: 2; color: rgba(255,255,255,0.35); }
+.footer-col-head { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1.25rem; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { font-size: 13px; color: rgba(255,255,255,0.35); transition: color .2s; }
+.footer-col ul li a { color: rgba(255,255,255,0.35); display: block; padding: 0.5rem 0; transition: color .2s; }
+.footer-col ul li a:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding-top: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+.footer-legal { display: flex; gap: 2rem; flex-wrap: wrap; }
+.footer-legal a { font-size: 12px; color: rgba(255,255,255,0.25); transition: color .2s; }
+.footer-legal a:hover { color: rgba(255,255,255,0.6); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+.search-overlay { display: none; position: fixed; inset: 0; background: rgba(10,22,40,0.8); backdrop-filter: blur(4px); z-index: 1000; }
+.search-overlay.active { display: flex; align-items: flex-start; justify-content: center; padding-top: 80px; }
+.search-modal { background: white; border-radius: 8px; padding: 2rem; width: 90%; max-width: 600px; box-shadow: 0 20px 60px rgba(10,22,40,0.3); }
+.search-modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.search-modal-title { font-size: 1.5rem; font-weight: 600; color: var(--black); }
+.search-modal-close { width: 32px; height: 32px; border: 1px solid var(--border); background: none; font-size: 20px; cursor: pointer; color: var(--muted); display: flex; align-items: center; justify-content: center; }
+.search-input-wrapper { position: relative; margin-bottom: 1.5rem; }
+.search-input-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--muted); }
+.search-input { width: 100%; padding: 0.85rem 1rem 0.85rem 2.75rem; border: 1px solid var(--border); font-size: 15px; font-family: inherit; outline: none; }
+.search-input:focus { border-color: var(--red); }
+.search-results { min-height: 60px; }
+.search-result-item { padding: 0.75rem 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+.search-result-item:hover .sri-title { color: var(--red); }
+.sri-title { font-size: 14px; font-weight: 500; color: var(--dark); margin-bottom: 0.2rem; }
+.sri-desc { font-size: 12px; color: var(--muted); }
+.search-empty { font-size: 14px; color: var(--muted); text-align: center; padding: 1rem 0; }
+@media (max-width: 768px) {
+  .nav-inner { padding: 0 1.25rem; height: auto; flex-wrap: wrap; position: relative; }
+  .nav-links { display: none; width: 100%; }
+  .nav-toggle { display: flex; }
+  .nav-right { margin-left: auto; gap: 0.5rem; }
+  .page-hero { padding: 4rem 1.25rem 2.5rem; }
+  .page-body { padding: 3rem 1.25rem; }
+  footer { padding: 2rem 1.25rem 1.5rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 2rem; }
+  .detail-table td:first-child { width: 140px; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="logo-mark">
+        <div class="logo-text">Zurich DS<span style="color:#C8001A">.</span></div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li class="nav-item"><a href="index.html">Home</a></li>
+      <li class="nav-item">
+        <a href="#">Services <span class="nav-chevron">›</span></a>
+        <div class="mega">
+          <div class="mega-item"><a href="sap-erp.html">SAP / ERP Consulting</a></div>
+          <div class="mega-item"><a href="integration-management.html">Integration Management</a></div>
+          <div class="mega-item"><a href="project-management.html">Project Management</a></div>
+          <div class="mega-item"><a href="digital-transformation.html">Digital Transformation</a></div>
+          <div class="mega-item"><a href="data-governance.html">Data Governance & Quality</a></div>
+          <div class="mega-item"><a href="mes-lims.html">MES & LIMS Integration</a></div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#">Industries <span class="nav-chevron">›</span></a>
+        <div class="mega">
+          <div class="mega-item"><a href="pharma.html">Pharmaceuticals & Life Sciences</a></div>
+          <div class="mega-item"><a href="manufacturing.html">Manufacturing</a></div>
+          <div class="mega-item"><a href="chemicals.html">Chemicals</a></div>
+          <div class="mega-item"><a href="medical-devices.html">Medical Devices</a></div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#">Our Products <span class="nav-chevron">›</span></a>
+        <div class="mega">
+          <div class="mega-item"><a href="batch-release-accelerator.html">Accelerated Batch Release</a></div>
+          <div class="mega-item"><a href="datalift.html">Datalift</a></div>
+        </div>
+      </li>
+      <li class="nav-item"><a href="about.html">About Us</a></li>
+      <li class="nav-item"><a href="careers.html">Careers</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-search">
+        <svg width="16" height="16" fill="none" viewBox="0 0 16 16">
+          <circle cx="6.5" cy="6.5" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="10" y1="10" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <button class="nav-toggle" id="navToggle">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <a href="index.html#contact" class="nav-btn">Contact us</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> <span>›</span> <span style="color:rgba(255,255,255,0.6)">Legal Notice</span>
+    </div>
+    <div class="page-hero-tag">Legal</div>
+    <h1 class="page-hero-h1">Legal Notice</h1>
+    <p class="page-hero-sub">Company information, registration details and legal disclosures for Zurich Digital Solutions GmbH, as required under Swiss law.</p>
+  </div>
+</section>
+
+<div class="page-body">
+
+  <div class="page-section">
+    <div class="ps-label">Company details</div>
+    <div class="ps-title">Zurich Digital Solutions GmbH</div>
+    <table class="detail-table">
+      <tr><td>Legal name</td><td>Zurich Digital Solutions GmbH</td></tr>
+      <tr><td>Legal form</td><td>Gesellschaft mit beschränkter Haftung (GmbH) — Swiss limited liability company</td></tr>
+      <tr><td>Registered office</td><td>Binzmühlestrasse 99, 8050 Zurich, Switzerland</td></tr>
+      <tr><td>Commercial register</td><td>Canton of Zurich (Handelsregisteramt des Kantons Zürich)</td></tr>
+      <tr><td>UID number</td><td>CHE-[to be confirmed]</td></tr>
+      <tr><td>VAT number</td><td>CHE-[to be confirmed] MWST</td></tr>
+      <tr><td>E-mail</td><td><a href="mailto:hello@zurichds.com" style="color:var(--red)">hello@zurichds.com</a></td></tr>
+      <tr><td>Website</td><td><a href="https://www.zurichds.com" style="color:var(--red)">www.zurichds.com</a></td></tr>
+    </table>
+  </div>
+
+  <div class="page-section">
+    <div class="ps-label">Responsible for content</div>
+    <div class="ps-title">Editorial responsibility</div>
+    <div class="ps-body">
+      <p>The content of this website is the sole responsibility of Zurich Digital Solutions GmbH. All editorial decisions are made by the management of ZDS.</p>
+      <div class="info-box">
+        <p><strong>Zurich Digital Solutions GmbH</strong><br>
+        Binzmühlestrasse 99, 8050 Zurich<br>
+        Switzerland<br>
+        <a href="mailto:hello@zurichds.com">hello@zurichds.com</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section">
+    <div class="ps-label">Disclaimer</div>
+    <div class="ps-title">Limitation of liability</div>
+    <div class="ps-body">
+      <p><strong>Accuracy of content:</strong> Zurich Digital Solutions GmbH endeavours to keep the information on this website accurate and up to date. However, we make no warranty, express or implied, as to the accuracy, completeness or timeliness of any information provided. We reserve the right to modify, supplement or delete content at any time without prior notice.</p>
+      <p><strong>External links:</strong> This website may contain links to third-party websites. ZDS has no control over these sites and accepts no responsibility for their content, accuracy or availability. The operators of linked sites are solely responsible for their content. At the time of linking, no unlawful content was apparent; we cannot be held responsible for changes that occur after linking.</p>
+      <p><strong>Intellectual property:</strong> All content published on this website — including text, graphics, logos, images and software — is the intellectual property of Zurich Digital Solutions GmbH or its content suppliers and is protected under Swiss and international copyright law. Reproduction, distribution or use of any content without prior written permission is prohibited.</p>
+      <p><strong>No legal advice:</strong> Content on this website is provided for general information purposes only and does not constitute legal, financial or professional advice. For specific guidance, please contact us directly.</p>
+    </div>
+  </div>
+
+  <div class="page-section">
+    <div class="ps-label">Applicable law</div>
+    <div class="ps-title">Governing law and jurisdiction</div>
+    <div class="ps-body">
+      <p>This website is operated from Switzerland. All legal relationships arising from or in connection with the use of this website are subject to <strong>Swiss law</strong>, to the exclusion of conflict-of-law rules and the UN Convention on Contracts for the International Sale of Goods (CISG).</p>
+      <p>The exclusive place of jurisdiction for any disputes arising in connection with this website is <strong>Zurich, Switzerland</strong>, subject to mandatory statutory provisions to the contrary.</p>
+    </div>
+  </div>
+
+  <div class="page-section">
+    <div class="ps-label">Data protection</div>
+    <div class="ps-title">Privacy</div>
+    <div class="ps-body">
+      <p>The processing of personal data in connection with this website is described in our <a href="privacy.html">Privacy Policy</a>. Our privacy practices comply with the Swiss Federal Act on Data Protection (nDSG) and, where applicable, the EU General Data Protection Regulation (GDPR).</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Search Modal -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-modal-head">
+      <h2 class="search-modal-title">Search</h2>
+      <div class="search-modal-close" id="searchClose">&times;</div>
+    </div>
+    <div class="search-input-wrapper">
+      <svg class="search-input-icon" width="16" height="16" fill="none" viewBox="0 0 16 16">
+        <circle cx="6.5" cy="6.5" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="10" y1="10" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search services, products, or industries...">
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">
+        <div class="logo-mark">
+          <div class="logo-text" style="color:white;font-size:18px">Zurich DS<span style="color:#C8001A">.</span></div>
+        </div>
+      </div>
+      <div class="footer-tagline">Zurich Digital Solutions GmbH</div>
+      <div class="footer-tagline" style="margin-top:.35rem;opacity:.6">precision SAP and digital consulting, engineered in Switzerland and deployed globally.</div>
+      <div class="footer-contact">
+        Binzmühlestrasse 99, 8050 Zurich<br>
+        hello@zurichds.com
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-head">Services</div>
+      <ul>
+        <li><a href="sap-erp.html">SAP / ERP Consulting</a></li>
+        <li><a href="integration-management.html">Integration Management</a></li>
+        <li><a href="project-management.html">Project Management</a></li>
+        <li><a href="digital-transformation.html">Digital Transformation</a></li>
+        <li><a href="data-governance.html">Data Governance & Quality</a></li>
+        <li><a href="mes-lims.html">MES & LIMS Integration</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-head">Industries</div>
+      <ul>
+        <li><a href="pharma.html">Pharma & Life Sciences</a></li>
+        <li><a href="manufacturing.html">Manufacturing</a></li>
+        <li><a href="chemicals.html">Chemicals</a></li>
+        <li><a href="medical-devices.html">Medical Devices</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-head">Company</div>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-head">Connect</div>
+      <ul>
+        <li>LinkedIn</li><li>XING</li><li>Insights</li><li>Newsletter</li><li>Events</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">
+      <a href="privacy.html">Privacy</a>
+      <a href="legal.html">Legal</a>
+      <a href="cookie-settings.html">Cookie settings</a>
+      <a href="sitemap.html">Sitemap</a>
+    </div>
+    <div class="footer-copy">© 2026 Zurich Digital Solutions GmbH · www.zurichds.com · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.logo-mark').addEventListener('click', () => location.href='index.html');
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.querySelector('.nav-links');
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', e => { e.preventDefault(); navToggle.classList.toggle('open'); navLinks.classList.toggle('mobile-open'); });
+  document.querySelectorAll('.nav-links .nav-item').forEach(item => {
+    const link = item.querySelector('a'); const mega = item.querySelector('.mega');
+    if (mega) { link.addEventListener('click', e => { if (navLinks.classList.contains('mobile-open')) { e.preventDefault(); item.classList.toggle('open'); } }); }
+    else { link.addEventListener('click', () => { navToggle.classList.remove('open'); navLinks.classList.remove('mobile-open'); }); }
+  });
+  document.addEventListener('click', e => { if (!e.target.closest('.nav') && navLinks.classList.contains('mobile-open')) { navToggle.classList.remove('open'); navLinks.classList.remove('mobile-open'); } });
+}
+const searchOverlay = document.getElementById('searchOverlay');
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+const navSearch = document.querySelector('.nav-search');
+const searchClose = document.getElementById('searchClose');
+const searchData = [
+  { title: 'SAP / ERP Consulting', desc: 'End-to-end SAP implementation', link: 'sap-erp.html', keywords: ['sap', 'erp'] },
+  { title: 'Integration Management', desc: 'Governance of integration programs', link: 'integration-management.html', keywords: ['integration'] },
+  { title: 'Accelerated Batch Release', desc: 'SAP-native batch release', link: 'batch-release-accelerator.html', keywords: ['batch', 'release'] },
+  { title: 'Datalift', desc: 'SAP-native data quality platform', link: 'datalift.html', keywords: ['datalift'] },
+  { title: 'About Us', desc: 'Learn about Zurich DS', link: 'about.html', keywords: ['about'] },
+  { title: 'Careers', desc: 'Join our team', link: 'careers.html', keywords: ['careers'] },
+];
+if (navSearch) {
+  navSearch.addEventListener('click', () => { searchOverlay.classList.add('active'); searchInput.focus(); });
+  searchClose.addEventListener('click', () => searchOverlay.classList.remove('active'));
+  searchOverlay.addEventListener('click', e => { if (e.target === searchOverlay) searchOverlay.classList.remove('active'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') searchOverlay.classList.remove('active'); });
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase().trim();
+    if (!q) { searchResults.innerHTML = ''; return; }
+    const matches = searchData.filter(d => d.title.toLowerCase().includes(q) || d.keywords.some(k => k.includes(q)));
+    searchResults.innerHTML = matches.length ? matches.map(d => `<div class="search-result-item" onclick="location.href='${d.link}'"><div class="sri-title">${d.title}</div><div class="sri-desc">${d.desc}</div></div>`).join('') : '<div class="search-empty">No results found.</div>';
+  });
+}
+</script>
+</body>
+</html>
