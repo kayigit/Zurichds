@@ -357,20 +357,17 @@ img { display: block; max-width: 100%; }
   padding: 5rem 2.5rem;
 }
 .hero-tag {
-  font-family: 'Source Serif 4', serif;
-  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
   font-weight: 700;
-  letter-spacing: -0.01em;
-  text-transform: none;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   color: #ffffff;
-  margin-bottom: 1.5rem;
-  display: block;
-  line-height: 1.1;
-  background: linear-gradient(90deg, #ffffff 0%, rgba(200,0,26,0.9) 60%, #ffffff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: none;
+  margin-bottom: 2rem;
+  display: inline-block;
+  line-height: 1;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--red);
 }
 .hero-h1 {
   font-family: 'Source Serif 4', serif;
@@ -936,8 +933,9 @@ footer {
     margin-bottom: 1rem;
   }
   .hero-tag {
-    font-size: clamp(1.4rem, 6vw, 2rem);
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 1.25rem;
   }
   
   .section-head {
