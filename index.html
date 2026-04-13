@@ -19,7 +19,7 @@
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
-body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); overflow-x: hidden; }
+body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); overflow-x: hidden; display: grid; grid-template-rows: 1fr auto; min-height: 100vh; }
 a { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
 
@@ -357,11 +357,17 @@ img { display: block; max-width: 100%; }
   padding: 5rem 2.5rem;
 }
 .hero-tag {
-  font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--red); margin-bottom: 1.75rem;
-  padding-left: 1rem;
-  border-left: 3px solid var(--red);
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 2rem;
   display: inline-block;
+  line-height: 1;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--red);
 }
 .hero-h1 {
   font-family: 'Source Serif 4', serif;
@@ -400,12 +406,12 @@ img { display: block; max-width: 100%; }
 ══════════════════════════════════════ */
 .services {
   padding: 20rem 0 0;
+  background: #0A1628;
 }
 .section-head {
   max-width: 1400px; margin: 0 auto;
-  padding: 0 2.5rem 3rem;
+  padding: 3rem 2.5rem 3rem;
   display: flex; align-items: flex-end; justify-content: space-between;
-  border-bottom: 1px solid var(--border);
   margin-bottom: 0;
 }
 .section-label {
@@ -415,9 +421,28 @@ img { display: block; max-width: 100%; }
 .section-h2 {
   font-family: 'Source Serif 4', serif;
   font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 300;
-  color: var(--black); line-height: 1.15; letter-spacing: -0.01em;
+  color: #ffffff; line-height: 1.15; letter-spacing: -0.01em;
 }
 .section-h2 em { font-style: italic; }
+
+/* Full-width red bar — services section only */
+.services-bar {
+  width: 100%;
+  background: var(--red);
+  padding: 0.45rem 2.5rem;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.services-bar-label {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+}
 .section-link {
   font-size: 14px; font-weight: 500; color: var(--red);
   display: flex; align-items: center; gap: 0.4rem;
@@ -426,51 +451,131 @@ img { display: block; max-width: 100%; }
 }
 .section-link:hover { gap: 0.7rem; }
 
-/* Service tiles — full-width row like ZDS */
+/* ── SERVICE GRID ── */
 .svc-grid {
-  display: grid; grid-template-columns: repeat(6,1fr);
-  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  background: #06101e;
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
 }
 .svc-tile {
-  padding: 2.5rem 2rem;
-  border-right: 1px solid var(--border);
-  position: relative; overflow: hidden;
+  position: relative;
+  overflow: hidden;
   cursor: pointer;
-  transition: background .25s;
-  min-height: 300px;
-  display: flex; flex-direction: column; justify-content: space-between;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: #0A1628;
+  border: 3px solid transparent;
+  box-sizing: border-box;
+  transition: border-color .3s;
 }
-.svc-tile:last-child { border-right: none; }
-.svc-tile::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0;
-  height: 4px; background: var(--red);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform .3s;
+.svc-tile:hover {
+  border-color: #ffffff;
+  z-index: 1;
 }
-.svc-tile:hover::before { transform: scaleX(1); }
-.svc-tile:hover { background: var(--bg); }
+.svc-tile::before { display: none; }
 
-.svc-num {
-  font-size: 11px; font-weight: 600; letter-spacing: 0.15em;
-  color: var(--red); margin-bottom: 1.5rem;
+/* Photo layer */
+.svc-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.45;
+  transition: transform .7s cubic-bezier(0.25,0.46,0.45,0.94), opacity .4s;
 }
-.svc-icon { margin-bottom: 1.5rem; }
+.svc-tile:hover .svc-photo {
+  transform: scale(1.06);
+  opacity: 0.6;
+}
+
+/* Gradient overlay */
+.svc-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    #0A1628 0%,
+    rgba(10,22,40,0.75) 45%,
+    rgba(10,22,40,0.15) 100%
+  );
+  z-index: 1;
+  transition: opacity .4s;
+}
+
+/* Number — top-left, always visible */
+.svc-num {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--red);
+  position: absolute;
+  top: 2rem;
+  left: 2.5rem;
+  z-index: 2;
+  opacity: 1;
+}
+
+/* Bottom content */
+.svc-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 2.5rem 2.5rem;
+}
+.svc-icon { display: none; }
+
 .svc-title {
   font-family: 'Source Serif 4', serif;
-  font-size: 1.15rem; font-weight: 400; color: var(--black);
-  line-height: 1.3; margin-bottom: 0.85rem;
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
 }
 .svc-desc {
-  font-size: 12.5px; color: var(--muted); line-height: 1.65;
-  flex: 1;
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height .4s ease, opacity .35s ease, margin .3s ease;
+  margin-bottom: 0;
+}
+.svc-tile:hover .svc-desc {
+  max-height: 120px;
+  opacity: 1;
+  margin-bottom: 1.25rem;
 }
 .svc-arrow {
-  margin-top: 1.5rem; font-size: 13px; font-weight: 500;
-  color: var(--red); display: flex; align-items: center; gap: 0.3rem;
-  opacity: 0; transform: translateX(-6px);
-  transition: opacity .25s, transform .25s;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .3s, transform .3s;
 }
-.svc-tile:hover .svc-arrow { opacity: 1; transform: translateX(0); }
+.svc-tile:hover .svc-arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+.svc-arrow::after {
+  content: '→';
+  transition: transform .25s;
+}
+.svc-tile:hover .svc-arrow::after { transform: translateX(4px); }
 
 /* ══════════════════════════════════════
    FEATURED INSIGHTS — editorial grid
@@ -519,50 +624,64 @@ img { display: block; max-width: 100%; }
 
 
 /* ══════════════════════════════════════
-   WHY ZDS — 3-col with icon list
+   WHY ZDS
 ══════════════════════════════════════ */
-.why { padding: 5rem 0; background: #0A1628; }
-.why-inner {
-  max-width: 1400px; margin: 0 auto; padding: 0 2.5rem;
-}
+.why { padding: 0; background: #0A1628; }
 .why-grid {
-  display: grid; grid-template-columns: 1fr 1fr 1fr;
-  gap: 0; margin-top: 3rem;
-  border: 1px solid rgba(255,255,255,0.07);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  background: #06101e;
 }
 .why-col {
-  padding: 3rem 2.5rem;
-  border-right: 1px solid rgba(255,255,255,0.07);
-}
-.why-col:last-child { border-right: none; }
-.why-icon {
-  width: 100%; height: 200px; margin-bottom: 1.5rem;
-  border-radius: 8px;
+  position: relative;
   overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(255,255,255,0.05);
+  cursor: default;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: #0A1628;
+  border: 3px solid transparent;
+  box-sizing: border-box;
+  transition: border-color .3s;
 }
-.why-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.why-col:hover { border-color: #ffffff; z-index: 1; }
+
+.why-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.45;
+  transition: transform .7s cubic-bezier(0.25,0.46,0.45,0.94), opacity .4s;
+}
+.why-col:hover .why-photo { transform: scale(1.06); opacity: 0.6; }
+
+.why-col::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    #0A1628 0%,
+    rgba(10,22,40,0.75) 45%,
+    rgba(10,22,40,0.15) 100%
+  );
+  z-index: 1;
+}
+.why-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 2.5rem 2.5rem;
 }
 .why-title {
   font-family: 'Source Serif 4', serif;
-  font-size: 1.3rem; font-weight: 400; color: white;
-  margin-bottom: 1rem; line-height: 1.25;
+  font-size: clamp(1.3rem, 1.8vw, 1.65rem);
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.25;
 }
-.why-list { list-style: none; }
-.why-list li {
-  font-size: 13px; color: rgba(255,255,255,0.45);
-  padding: 0.45rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  display: flex; align-items: center; gap: 0.6rem;
-  transition: color .2s;
-}
-.why-list li:hover { color: rgba(255,255,255,0.8); }
-.why-list li::before { content: '—'; color: var(--red); flex-shrink: 0; font-size: 11px; }
 
 /* ══════════════════════════════════════
    CTA BAND
@@ -722,7 +841,7 @@ footer {
     display: flex;
   }
   .nav-right {
-    margin-left: 0;
+    margin-left: auto;
     gap: 0.5rem;
   }
   .nav-btn {
@@ -772,8 +891,13 @@ footer {
   .services {
     padding: 3rem 0 0;
   }
+  .svc-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+  }
+  .svc-tile { min-height: 340px; }
   .section-head {
-    padding: 0 1.25rem 2rem;
+    padding: 2rem 1.25rem 2rem;
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
@@ -783,17 +907,16 @@ footer {
   }
   .svc-grid {
     grid-template-columns: 1fr;
-    border-top: 1px solid var(--border);
+    gap: 3px;
   }
   .svc-tile {
-    padding: 2rem 1.25rem;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    min-height: auto;
+    min-height: 280px;
   }
-  .svc-tile:last-child {
-    border-bottom: none;
-  }
+  .svc-num { left: 1.5rem; top: 1.5rem; }
+  .svc-content { padding: 0 1.5rem 2rem; }
+  .svc-title { font-size: 1.15rem; }
+  .svc-desc { max-height: 120px; opacity: 1; margin-bottom: 1rem; font-size: 13px; }
+  .svc-arrow { opacity: 1; transform: none; }
   
   /* INSIGHTS */
   .insights {
@@ -822,22 +945,11 @@ footer {
   }
   
   /* WHY ZDS */
-  .why { padding: 3rem 0; }
-  .why-inner { padding: 0 1.25rem; }
   .why-grid {
-    grid-template-columns: 1fr;
-    gap: 0;
-    margin-top: 2rem;
-    border: none;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
   }
-  .why-col {
-    padding: 2rem 0;
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
-  .why-col:last-child {
-    border-bottom: none;
-  }
+  .why-col { min-height: 340px; }
   
   /* CTA BAND */
   .cta-band {
@@ -927,12 +1039,13 @@ footer {
     margin-bottom: 1rem;
   }
   .hero-tag {
-    font-size: 10px;
-    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 1.25rem;
   }
   
   .section-head {
-    padding: 0 0.75rem 1.5rem;
+    padding: 1.75rem 0.75rem 1.75rem;
   }
   .section-label {
     font-size: 10px;
@@ -942,21 +1055,21 @@ footer {
   }
   
   .svc-tile {
-    padding: 1.5rem 1rem;
+    padding: 1.75rem 1.25rem;
   }
   .svc-num {
-    font-size: 10px;
-    margin-bottom: 1rem;
+    font-size: 60px;
+    top: -8px;
   }
   .svc-title {
-    font-size: 1rem;
+    font-size: 1.05rem;
     margin-bottom: 0.6rem;
   }
   .svc-desc {
-    font-size: 12px;
+    font-size: 13px;
   }
   .svc-icon {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
   
   .insights-inner {
@@ -986,18 +1099,13 @@ footer {
     font-size: 1.8rem;
   }
   
-  .why-inner { padding: 0 0.75rem; }
-  .why-col {
-    padding: 1.5rem 0;
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 3px;
   }
-  .why-title {
-    font-size: 1.15rem;
-    margin-bottom: 0.75rem;
-  }
-  .why-list li {
-    font-size: 12px;
-    padding: 0.35rem 0;
-  }
+  .why-col { min-height: 280px; }
+  .why-content { padding: 0 1.5rem 2rem; }
+  .why-title { font-size: 1.2rem; }
   
   .cta-band {
     padding: 1.5rem 0.75rem;
@@ -1237,7 +1345,7 @@ footer {
   </div>
 
   <div class="hero-content">
-    <div class="hero-tag">Zurich Digital Solutions · Switzerland</div>
+    <div class="hero-tag">Zurich Digital Solutions</div>
     <h1 class="hero-h1">
       Making an impact<br>
       that <strong>matters.</strong><br>
@@ -1248,7 +1356,7 @@ footer {
     </p>
     <div class="hero-actions">
       <a href="#services" class="btn-green">Explore our services ›</a>
-      <a href="#about" class="btn-outline-w">Our story</a>
+      <a href="about.html" class="btn-outline-w">Our story</a>
     </div>
   </div>
 </section>
@@ -1257,120 +1365,69 @@ footer {
 
 <!-- SERVICES -->
 <section class="services" id="services">
-  <div class="section-head reveal">
-    <div>
-      <div class="section-label">What we do</div>
-      <div class="section-h2">Our service lines</div>
-    </div>
-    <div></div>
+  <div class="services-bar reveal">
+    <span class="services-bar-label">What we do</span>
   </div>
   <div class="svc-grid">
 
-    <div class="svc-tile reveal">
-      <div>
-        <div class="svc-num">01</div>
-        <div class="svc-icon">
-          <svg width="32" height="32" fill="none" viewBox="0 0 32 32">
-            <rect x="2" y="7" width="28" height="18" rx="2" stroke="#C8001A" stroke-width="1.25"/>
-            <rect x="7" y="12" width="7" height="5" rx="1" stroke="#C8001A" stroke-width="1"/>
-            <line x1="17" y1="14" x2="24" y2="14" stroke="#C8001A" stroke-width="0.75" opacity=".6"/>
-            <line x1="17" y1="17" x2="22" y2="17" stroke="#C8001A" stroke-width="0.75" opacity=".4"/>
-          </svg>
-        </div>
-        <div class="svc-title" href="sap-erp.html">SAP / ERP Consulting</div>
+    <div class="svc-tile reveal" data-href="sap-erp.html">
+      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&fit=crop')"></div>
+      <div class="svc-num">01</div>
+      <div class="svc-content">
+        <div class="svc-title">SAP / ERP Consulting</div>
         <div class="svc-desc">End-to-end implementation, rollout and optimization of SAP landscapes. From S/4HANA blueprinting to post-go-live support.</div>
+        <div class="svc-arrow">Learn more</div>
       </div>
-      <div class="svc-arrow">Learn more ›</div>
     </div>
 
-    <div class="svc-tile reveal" style="transition-delay:.08s">
-      <div>
-        <div class="svc-num">02</div>
-        <div class="svc-icon">
-          <svg width="32" height="32" fill="none" viewBox="0 0 32 32">
-            <circle cx="16" cy="16" r="11" stroke="#C8001A" stroke-width="1.25"/>
-            <path d="M16 7 L16 16 L22 16" stroke="#C8001A" stroke-width="1.25" stroke-linecap="round"/>
-            <circle cx="16" cy="16" r="1.5" fill="#C8001A"/>
-          </svg>
-        </div>
-        <div class="svc-title" href="integration-management.html">Integration Management</div>
+    <div class="svc-tile reveal" style="transition-delay:.08s" data-href="integration-management.html">
+      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&fit=crop')"></div>
+      <div class="svc-num">02</div>
+      <div class="svc-content">
+        <div class="svc-title">Integration Management</div>
         <div class="svc-desc">End-to-end governance and delivery oversight of integration programs across SAP and third-party landscapes.</div>
+        <div class="svc-arrow">Learn more</div>
       </div>
-      <div class="svc-arrow">Learn more ›</div>
     </div>
 
-    <div class="svc-tile reveal" style="transition-delay:.16s">
-      <div>
-        <div class="svc-num">03</div>
-        <div class="svc-icon">
-          <svg width="32" height="32" fill="none" viewBox="0 0 32 32">
-            <rect x="2" y="4" width="28" height="24" rx="2" stroke="#C8001A" stroke-width="1.25"/>
-            <line x1="2" y1="11" x2="30" y2="11" stroke="#C8001A" stroke-width="0.75"/>
-            <circle cx="7" cy="7.5" r="1.5" fill="#C8001A"/>
-            <circle cx="11.5" cy="7.5" r="1.5" fill="#C8001A" opacity=".4"/>
-            <circle cx="16" cy="7.5" r="1.5" fill="#C8001A" opacity=".2"/>
-            <rect x="6" y="15" width="20" height="2" rx="1" fill="#C8001A" opacity=".2"/>
-            <rect x="6" y="20" width="13" height="2" rx="1" fill="#C8001A" opacity=".15"/>
-          </svg>
-        </div>
-        <div class="svc-title" href="project-management.html">Project Management</div>
+    <div class="svc-tile reveal" style="transition-delay:.16s" data-href="project-management.html">
+      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&fit=crop')"></div>
+      <div class="svc-num">03</div>
+      <div class="svc-content">
+        <div class="svc-title">Project Management</div>
         <div class="svc-desc">Structured delivery of complex SAP initiatives — scope, budget, risk and stakeholder management from kick-off to go-live.</div>
+        <div class="svc-arrow">Learn more</div>
       </div>
-      <div class="svc-arrow">Learn more ›</div>
     </div>
 
-    <div class="svc-tile reveal" style="transition-delay:.24s">
-      <div>
-        <div class="svc-num">04</div>
-        <div class="svc-icon">
-          <svg width="32" height="32" fill="none" viewBox="0 0 32 32">
-            <rect x="2" y="19" width="5" height="9" rx="1" stroke="#C8001A" stroke-width="1"/>
-            <rect x="11" y="13" width="5" height="15" rx="1" stroke="#C8001A" stroke-width="1.25"/>
-            <rect x="20" y="7" width="5" height="21" rx="1" stroke="#C8001A" stroke-width="1"/>
-            <polyline points="4.5,19 13.5,13 22.5,7" stroke="#C8001A" stroke-width="0.75" fill="none" opacity=".5"/>
-          </svg>
-        </div>
-        <div class="svc-title" href="digital-transformation.html">Digital Transformation</div>
+    <div class="svc-tile reveal" style="transition-delay:.24s" data-href="digital-transformation.html">
+      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80&fit=crop')"></div>
+      <div class="svc-num">04</div>
+      <div class="svc-content">
+        <div class="svc-title">Digital Transformation</div>
         <div class="svc-desc">Strategic roadmaps from legacy ERP to modern digital operations. AI-assisted workflows and process automation.</div>
+        <div class="svc-arrow">Learn more</div>
       </div>
-      <div class="svc-arrow">Learn more ›</div>
     </div>
 
-    <div class="svc-tile reveal" style="transition-delay:.32s">
-      <div>
-        <div class="svc-num">05</div>
-        <div class="svc-icon">
-          <svg width="32" height="32" fill="none" viewBox="0 0 32 32">
-            <ellipse cx="16" cy="9" rx="11" ry="4.5" stroke="#C8001A" stroke-width="1.25"/>
-            <path d="M5 9 Q5 16.5 16 16.5 Q27 16.5 27 9" stroke="#C8001A" stroke-width="0.75" fill="none"/>
-            <path d="M5 16.5 Q5 24 16 24 Q27 24 27 16.5" stroke="#C8001A" stroke-width="1.25" fill="none"/>
-          </svg>
-        </div>
+    <div class="svc-tile reveal" style="transition-delay:.32s" data-href="data-governance.html">
+      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&fit=crop')"></div>
+      <div class="svc-num">05</div>
+      <div class="svc-content">
         <div class="svc-title">Data Governance & Quality</div>
         <div class="svc-desc">Enterprise data governance frameworks, quality rules, stewardship programs and master data management.</div>
+        <div class="svc-arrow">Learn more</div>
       </div>
-      <div class="svc-arrow">Learn more ›</div>
     </div>
 
-    <div class="svc-tile reveal" style="transition-delay:.4s">
-      <div>
-        <div class="svc-num">06</div>
-        <div class="svc-icon">
-          <svg width="32" height="32" fill="none" viewBox="0 0 32 32">
-            <rect x="2" y="4" width="12" height="12" rx="1.5" stroke="#C8001A" stroke-width="1"/>
-            <rect x="18" y="4" width="12" height="12" rx="1.5" stroke="#C8001A" stroke-width="1.25"/>
-            <rect x="2" y="20" width="12" height="12" rx="1.5" stroke="#C8001A" stroke-width="1.25"/>
-            <rect x="18" y="20" width="12" height="12" rx="1.5" stroke="#C8001A" stroke-width="1"/>
-            <line x1="14" y1="10" x2="18" y2="10" stroke="#C8001A" stroke-width="0.75"/>
-            <line x1="8" y1="16" x2="8" y2="20" stroke="#C8001A" stroke-width="0.75"/>
-            <line x1="24" y1="16" x2="24" y2="20" stroke="#C8001A" stroke-width="0.75"/>
-            <line x1="14" y1="26" x2="18" y2="26" stroke="#C8001A" stroke-width="0.75"/>
-          </svg>
-        </div>
+    <div class="svc-tile reveal" style="transition-delay:.4s" data-href="mes-lims.html">
+      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=800&q=80&fit=crop')"></div>
+      <div class="svc-num">06</div>
+      <div class="svc-content">
         <div class="svc-title">MES & LIMS Integration</div>
         <div class="svc-desc">Validated bidirectional SAP connections to manufacturing execution and laboratory systems with full GxP compliance.</div>
+        <div class="svc-arrow">Learn more</div>
       </div>
-      <div class="svc-arrow">Learn more ›</div>
     </div>
 
   </div>
@@ -1380,28 +1437,25 @@ footer {
 
 <!-- WHY ZDS -->
 <section class="why">
-  <div class="why-inner">
-    <div class="reveal">
-      <div class="section-label" style="color:var(--red)">Why us</div>
-      <div class="section-h2" style="color:white">The Zurich DS difference.</div>
-    </div>
-    <div class="why-grid">
-      <div class="why-col reveal">
-        <div class="why-icon">
-          <img src="https://picsum.photos/400/400?random=1" alt="Swiss precision" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-        </div>
+  <div class="services-bar reveal">
+    <span class="services-bar-label">Why us</span>
+  </div>
+  <div class="why-grid">
+    <div class="why-col reveal">
+      <div class="why-photo" style="background-image:url('https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=900&q=80&fit=crop')"></div>
+      <div class="why-content">
         <div class="why-title">Swiss precision,<br>every time.</div>
       </div>
-      <div class="why-col reveal" style="transition-delay:.15s">
-        <div class="why-icon">
-          <img src="https://picsum.photos/400/400?random=2" alt="Deep SAP expertise" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-        </div>
+    </div>
+    <div class="why-col reveal" style="transition-delay:.15s">
+      <div class="why-photo" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=900&q=80&fit=crop')"></div>
+      <div class="why-content">
         <div class="why-title">Deep SAP<br>expertise.</div>
       </div>
-      <div class="why-col reveal" style="transition-delay:.3s">
-        <div class="why-icon">
-          <img src="https://picsum.photos/400/400?random=3" alt="Industry-first approach" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-        </div>
+    </div>
+    <div class="why-col reveal" style="transition-delay:.3s">
+      <div class="why-photo" style="background-image:url('https://images.unsplash.com/photo-1579154204601-01588f351e67?w=900&q=80&fit=crop')"></div>
+      <div class="why-content">
         <div class="why-title">Industry-first<br>approach.</div>
       </div>
     </div>
@@ -1456,10 +1510,7 @@ footer {
       <div class="footer-col-head">Company</div>
       <ul>
         <li><a href="about.html">About Us</a></li>
-        <li>Leadership</li>
         <li><a href="careers.html">Careers</a></li>
-        <li>Press</li>
-        <li>Sustainability</li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1635,10 +1686,10 @@ if (navToggle && navLinks) {
 
 // ── SERVICE TILES CLICK HANDLER ──
 document.querySelectorAll('.svc-tile').forEach(tile => {
-  const titleElement = tile.querySelector('.svc-title');
-  const href = titleElement ? titleElement.getAttribute('href') : null;
-  
+  const href = tile.getAttribute('data-href');
+
   if (href) {
+    tile.style.cursor = 'pointer';
     tile.addEventListener('click', () => {
       window.location.href = href;
     });
