@@ -161,7 +161,7 @@ img { display: block; max-width: 100%; }
     linear-gradient(135deg, rgba(200,0,26,0.08) 0%, transparent 50%),
     linear-gradient(to right, rgba(10,22,40,0.75) 35%, rgba(10,22,40,0.15) 100%);
 }
-/* Abstract geometric — Swiss precision feel */
+/* Abstract geometric - Swiss precision feel */
 .hero-geo {
   position: absolute; right: 0; top: 0; bottom: 0;
   width: 55%; overflow: hidden;
@@ -246,7 +246,7 @@ img { display: block; max-width: 100%; }
 }
 .section-link:hover { gap: 0.7rem; }
 
-/* Service tiles — full-width row like ZDS */
+/* Service tiles - full-width row like Zurich DS */
 .svc-grid {
   display: grid; grid-template-columns: repeat(6,1fr);
   border-top: 1px solid var(--border);
@@ -293,7 +293,7 @@ img { display: block; max-width: 100%; }
 .svc-tile:hover .svc-arrow { opacity: 1; transform: translateX(0); }
 
 /* ══════════════════════════════════════
-   FEATURED INSIGHTS — editorial grid
+   FEATURED INSIGHTS - editorial grid
 ══════════════════════════════════════ */
 .insights { padding: 5rem 0; background: var(--bg); }
 .insights-inner { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; }
@@ -339,7 +339,7 @@ img { display: block; max-width: 100%; }
 
 
 /* ══════════════════════════════════════
-   WHY ZDS — 3-col with icon list
+   WHY Zurich DS - 3-col with icon list
 ══════════════════════════════════════ */
 .why { padding: 5rem 0; background: #0A1628; }
 .why-inner {
@@ -801,6 +801,7 @@ footer {
           <div class="mega-item"><a href="#">Manufacturing</a></div>
           <div class="mega-item"><a href="#">Chemicals</a></div>
           <div class="mega-item"><a href="#">Medical Devices</a></div>
+          <div class="mega-item"><a href="foods.html">Food &amp; Beverage</a></div>
         </div>
       </li>
       <li class="nav-item">
@@ -841,7 +842,7 @@ footer {
   <div class="two-col">
     <div>
       <div class="ps-title">Quality systems for<br><em>life-critical devices.</em></div>
-      <div class="ps-body">Medical device manufacturers operate under some of the strictest regulatory frameworks in the world. MDR, FDA 21 CFR Part 820, ISO 13485 — each demands rigorous quality systems, complete traceability and controlled change management. SAP is the platform that makes this manageable at scale.</div>
+      <div class="ps-body">Medical device manufacturers operate under some of the strictest regulatory frameworks in the world. MDR, FDA 21 CFR Part 820, ISO 13485 - each demands rigorous quality systems, complete traceability and controlled change management. SAP is the platform that makes this manageable at scale.</div>
     </div>
     <div class="ps-body" style="padding-top:0.5rem">
       <p style="margin-bottom:1rem">Zurich DS brings both SAP expertise and deep understanding of medical device quality requirements. We configure SAP QM, validate systems to the required standards and integrate with your PLM and LIMS environments.</p>
@@ -888,7 +889,7 @@ footer {
     <div>
       <div class="footer-brand">
         <div class="logo-mark">
-          <div class="logo-text" style="color:white;font-size:18px">ZDS<span style="color:#C8001A">.</span></div>
+          <div class="logo-text" style="color:white;font-size:18px">Zurich DS<span style="color:#C8001A">.</span></div>
         </div>
       </div>
       <div class="footer-tagline">Zurich Digital Solutions GmbH</div>
@@ -916,6 +917,7 @@ footer {
         <li><a href="manufacturing.html">Manufacturing</a></li>
         <li><a href="chemicals.html">Chemicals</a></li>
         <li><a href="medical-devices.html">Medical Devices</a></li>
+        <li><a href="foods.html">Food &amp; Beverage</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -963,6 +965,7 @@ const pageMap = {
   'Manufacturing': 'manufacturing.html',
   'Chemicals': 'chemicals.html',
   'Medical Devices': 'medical-devices.html',
+  'Food & Beverage': 'foods.html',
   'Accelerated Batch Release': 'batch-release-accelerator.html',
   'Datalift': 'datalift.html',
   'About Us': 'about.html',
@@ -972,7 +975,7 @@ document.querySelectorAll('a').forEach(a => {
   const txt = a.textContent.trim();
   if(pageMap[txt]) a.href = pageMap[txt];
   if(txt === 'Services' || txt === 'Industries' || txt === 'Our Products') a.href = '#';
-  if(a.href.includes('index.html') || a.textContent.includes('ZDS') || a.querySelector('.logo-text')) 
+  if(a.href.includes('index.html') || a.textContent.includes('Zurich DS') || a.querySelector('.logo-text')) 
     a.href = 'index.html';
 });
 document.querySelector('.logo-text') && (document.querySelector('.logo-text').closest('a, div').style.cursor='pointer');
@@ -996,6 +999,7 @@ const searchData = [
   { title: 'Manufacturing', desc: 'Manufacturing industry solutions and expertise', link: 'manufacturing.html', keywords: ['manufacturing'] },
   { title: 'Chemicals', desc: 'Chemicals industry solutions and consulting', link: 'chemicals.html', keywords: ['chemicals'] },
   { title: 'Medical Devices', desc: 'Medical devices industry compliance and solutions', link: 'medical-devices.html', keywords: ['medical', 'devices'] },
+  { title: 'Food & Beverage', desc: 'SAP solutions for food and beverage industry', link: 'foods.html', keywords: ['food', 'beverage', 'fmcg', 'foods'] },
   { title: 'Datalift', desc: 'SAP-native data quality and governance platform', link: 'datalift.html', keywords: ['datalift', 'data quality'] },
   { title: 'Accelerated Batch Release', desc: 'Accelerated Batch Release product', link: 'batch-release-accelerator.html', keywords: ['batch', 'release', 'accelerator'] },
   { title: 'About Us', desc: 'Learn about Zurich DS', link: 'about.html', keywords: ['about', 'zurich', 'ds'] },
