@@ -246,7 +246,7 @@ img { display: block; max-width: 100%; }
 }
 .section-link:hover { gap: 0.7rem; }
 
-/* Service tiles — full-width row like ZDS */
+/* Service tiles — full-width row like Zurich DS */
 .svc-grid {
   display: grid; grid-template-columns: repeat(6,1fr);
   border-top: 1px solid var(--border);
@@ -339,7 +339,7 @@ img { display: block; max-width: 100%; }
 
 
 /* ══════════════════════════════════════
-   WHY ZDS — 3-col with icon list
+   WHY Zurich DS — 3-col with icon list
 ══════════════════════════════════════ */
 .why { padding: 5rem 0; background: #0A1628; }
 .why-inner {
@@ -972,7 +972,7 @@ document.querySelectorAll('a').forEach(a => {
   const txt = a.textContent.trim();
   if(pageMap[txt]) a.href = pageMap[txt];
   if(txt === 'Services' || txt === 'Industries' || txt === 'Our Products') a.href = '#';
-  if(a.href.includes('index.html') || a.textContent.includes('ZDS') || a.querySelector('.logo-text')) 
+  if(a.href.includes('index.html') || a.textContent.includes('Zurich DS') || a.querySelector('.logo-text')) 
     a.href = 'index.html';
 });
 document.querySelector('.logo-text') && (document.querySelector('.logo-text').closest('a, div').style.cursor='pointer');
