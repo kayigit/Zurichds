@@ -1276,42 +1276,27 @@ const teamData = {
   oktay: {
     name: 'Oktay Caglar',
     position: 'Lead Director, SAP Consulting',
-    bio: 'Oktay is a life science expert/architect with over 20 years\' industry experience and a strong track record of delivering successful projects and creating long-term value for his clients. He has sound experience in manufacturing, supply chain planning and execution, quality management, and master data governance with a particular focus on the pharmaceutical industry. Oktay played key roles in several large SAP-based transformation projects within local and global pharma companies, working in Europe (almost all countries in the EU), Asia, and the U.S.A.',
-    expertise: 'SAP implementations, Manufacturing, Supply chain planning, Quality management, Master data governance, Pharma industry expertise',
-    education: 'Dipl. Ing. Electrical Engineering, ETH Zurich',
-    certifications: 'SAP Certified Application Associate – SAP S/4HANA'
+    bio: 'Oktay is a life science expert/architect with over 20 years\' industry experience and a strong track record of delivering successful projects and creating long-term value for his clients. He has sound experience in manufacturing, supply chain planning and execution, quality management, and master data governance with a particular focus on the pharmaceutical industry. Oktay played key roles in several large SAP-based transformation projects within local and global pharma companies, working in Europe (almost all countries in the EU), Asia, and the U.S.A.'
   },
   cem: {
     name: 'Cem Simsek',
     position: 'Head of Data Governance',
-    bio: 'Anne specializes in enterprise data governance, quality frameworks and stewardship programs. With 16 years in regulated industries, she has designed and implemented governance structures for pharma, medtech and life sciences organizations.',
-    expertise: 'Enterprise data governance, Data quality frameworks, Master data management (MDM), Regulatory compliance (GxP, CSV), Stewardship models',
-    education: 'MSc Computer Science, University of Zurich',
-    certifications: 'IAIDQ Certified Data Governance Professional'
+    bio: 'Anne specializes in enterprise data governance, quality frameworks and stewardship programs. With 16 years in regulated industries, she has designed and implemented governance structures for pharma, medtech and life sciences organizations.'
   },
   kadir: {
     name: 'Kadir Yigit',
     position: 'Senior Integration Architect',
-    bio: 'Stefan is our lead integration architect with deep experience in enterprise middleware, API design and cloud-native integration patterns. He specializes in SAP Integration Suite and modern iPaaS architectures.',
-    expertise: 'SAP Integration Suite, iPaaS platforms, API management, Middleware (XI/PI), Cloud integration, REST/SOAP/EDI',
-    education: 'Dipl. Ing. Computer Science, UAS Bern',
-    certifications: 'SAP Certified Application Associate – SAP Integration Suite'
+    bio: 'Stefan is our lead integration architect with deep experience in enterprise middleware, API design and cloud-native integration patterns. He specializes in SAP Integration Suite and modern iPaaS architectures.'
   },
   batuhan: {
     name: 'Batuhan Kalyoncu',
     position: 'Digital Transformation Lead',
-    bio: 'Julia leads digital transformation initiatives with a focus on process optimization and change enablement. She has guided complex organizational transformations across pharma, manufacturing and consumer goods.',
-    expertise: 'Digital transformation roadmaps, Business process optimization, Change management, Organizational design, Training and enablement, Pharma/MedTech transformation',
-    education: 'MBA Business Administration, University of St. Gallen',
-    certifications: 'Certified Change Manager (APMG)'
+    bio: 'Julia leads digital transformation initiatives with a focus on process optimization and change enablement. She has guided complex organizational transformations across pharma, manufacturing and consumer goods.'
   },
   yilmaz: {
     name: 'Yilmaz Temirci',
     position: 'Delivery Manager, Quality Assurance',
-    bio: 'Thomas ensures quality and compliance across all delivery engagements. With 14 years in regulated industries, he has managed go-lives, quality assurance and compliance programs for GxP-critical systems.',
-    expertise: 'GxP compliance frameworks, Test automation, Quality assurance, Go-live management, Risk and compliance, CSV/21 CFR Part 11',
-    education: 'MSc Pharmaceutical Sciences, University of Basel',
-    certifications: 'GXPQA Specialist, Certified Six Sigma Black Belt'
+    bio: 'Thomas ensures quality and compliance across all delivery engagements. With 14 years in regulated industries, he has managed go-lives, quality assurance and compliance programs for GxP-critical systems.'
   }
 };
 
@@ -1350,20 +1335,7 @@ function initTeamModal() {
         modalPosition.textContent = data.position;
         modalBody.innerHTML = `
           <div class="team-modal-section">
-            <div class="team-modal-section-title">About</div>
             <div class="team-modal-section-text">${data.bio}</div>
-          </div>
-          <div class="team-modal-section">
-            <div class="team-modal-section-title">Expertise</div>
-            <div class="team-modal-section-text">${data.expertise}</div>
-          </div>
-          <div class="team-modal-section">
-            <div class="team-modal-section-title">Education</div>
-            <div class="team-modal-section-text">${data.education}</div>
-          </div>
-          <div class="team-modal-section">
-            <div class="team-modal-section-title">Certifications</div>
-            <div class="team-modal-section-text">${data.certifications}</div>
           </div>
         `;
         console.log('Adding active class to modal');
