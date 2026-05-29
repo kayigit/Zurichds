@@ -1150,10 +1150,15 @@ footer {
   <div class="team-modal">
     <div class="team-modal-header">
       <button class="team-modal-close" id="teamModalClose">&times;</button>
-      <div class="team-modal-name" id="modalName"></div>
-      <div class="team-modal-position" id="modalPosition"></div>
     </div>
-    <div class="team-modal-body" id="modalBody"></div>
+    <div style="display: flex; gap: 2rem; align-items: flex-start;">
+      <div id="modalPhoto" style="flex-shrink: 0; width: 200px; height: 250px; overflow: hidden;"></div>
+      <div style="flex: 1;">
+        <div class="team-modal-name" id="modalName"></div>
+        <div class="team-modal-position" id="modalPosition"></div>
+        <div class="team-modal-body" id="modalBody"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1276,26 +1281,31 @@ const teamData = {
   oktay: {
     name: 'Oktay Caglar',
     position: 'Lead Director, SAP Consulting',
+    photo: 'https://picsum.photos/280/350?random=10',
     bio: 'Oktay is a life science expert/architect with over 20 years\' industry experience and a strong track record of delivering successful projects and creating long-term value for his clients. He has sound experience in manufacturing, supply chain planning and execution, quality management, and master data governance with a particular focus on the pharmaceutical industry. Oktay played key roles in several large SAP-based transformation projects within local and global pharma companies, working in Europe (almost all countries in the EU), Asia, and the U.S.A.'
   },
   cem: {
     name: 'Cem Simsek',
     position: 'Head of Data Governance',
+    photo: 'https://picsum.photos/280/350?random=11',
     bio: 'Anne specializes in enterprise data governance, quality frameworks and stewardship programs. With 16 years in regulated industries, she has designed and implemented governance structures for pharma, medtech and life sciences organizations.'
   },
   kadir: {
     name: 'Kadir Yigit',
     position: 'Senior Integration Architect',
+    photo: 'Kadir Yigit Photo.jpg',
     bio: 'Stefan is our lead integration architect with deep experience in enterprise middleware, API design and cloud-native integration patterns. He specializes in SAP Integration Suite and modern iPaaS architectures.'
   },
   batuhan: {
     name: 'Batuhan Kalyoncu',
     position: 'Digital Transformation Lead',
+    photo: 'https://picsum.photos/280/350?random=12',
     bio: 'Julia leads digital transformation initiatives with a focus on process optimization and change enablement. She has guided complex organizational transformations across pharma, manufacturing and consumer goods.'
   },
   yilmaz: {
     name: 'Yilmaz Temirci',
     position: 'Delivery Manager, Quality Assurance',
+    photo: 'https://picsum.photos/280/350?random=13',
     bio: 'Thomas ensures quality and compliance across all delivery engagements. With 14 years in regulated industries, he has managed go-lives, quality assurance and compliance programs for GxP-critical systems.'
   }
 };
@@ -1313,9 +1323,10 @@ function initTeamModal() {
   const modalName = document.getElementById('modalName');
   const modalPosition = document.getElementById('modalPosition');
   const modalBody = document.getElementById('modalBody');
+  const modalPhoto = document.getElementById('modalPhoto');
 
-  if (!modalOverlay || !modalClose || !modalName || !modalPosition || !modalBody) {
-    console.error('Modal elements not found:', { modalOverlay, modalClose, modalName, modalPosition, modalBody });
+  if (!modalOverlay || !modalClose || !modalName || !modalPosition || !modalBody || !modalPhoto) {
+    console.error('Modal elements not found:', { modalOverlay, modalClose, modalName, modalPosition, modalBody, modalPhoto });
     return;
   }
 
@@ -1329,10 +1340,11 @@ function initTeamModal() {
       const team = this.getAttribute('data-team');
       const data = teamData[team];
       console.log('Team card clicked:', team, data);
-      
+
       if(data) {
         modalName.textContent = data.name;
         modalPosition.textContent = data.position;
+        modalPhoto.innerHTML = `<img src="${data.photo}" alt="${data.name}" style="width: 100%; height: 100%; object-fit: cover;">`;
         modalBody.innerHTML = `
           <div class="team-modal-section">
             <div class="team-modal-section-text">${data.bio}</div>
