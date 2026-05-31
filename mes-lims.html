@@ -829,14 +829,13 @@ footer {
 
     <ul class="nav-links">
       <li class="nav-item">
-        <a href="#">Services <span class="nav-chevron">▾</span></a>
+        <a href="#">Services <span class="nav-chevron">›</span></a>
         <div class="mega">
-          <div class="mega-item"><a href="#">SAP / ERP Consulting</a></div>
-          <div class="mega-item"><a href="#">Integration Management</a></div>
-          <div class="mega-item"><a href="#">Project Management</a></div>
-          <div class="mega-item"><a href="#">Digital Transformation</a></div>
-          <div class="mega-item"><a href="#">Data Governance & Quality</a></div>
-          <div class="mega-item"><a href="#">MES & LIMS Integration</a></div>
+          <div class="mega-item"><a href="sap-erp.html">SAP ECC & S4/HANA Functional Consulting</a></div>
+          <div class="mega-item"><a href="project-management.html">Project Management</a></div>
+          <div class="mega-item"><a href="integration-management.html">Integration Management</a></div>
+          <div class="mega-item"><a href="data-governance.html">Data Governance and Quality</a></div>
+          <div class="mega-item"><a href="mes-lims.html">MES & LIMS Integration</a></div>
         </div>
       </li>
       <li class="nav-item">
@@ -899,18 +898,16 @@ footer {
 <div class="page-section reveal">
   <div class="ps-label">Integration scope</div>
   <div class="ps-title">What we connect</div>
-  <div class="ps-grid">
-    <div class="ps-card"><div class="ps-card-num">01</div><div class="ps-card-title">MES ↔ SAP PP</div><div class="ps-card-desc">Production orders, confirmations, goods movements and yield reporting between MES and SAP PP.</div></div>
-    <div class="ps-card"><div class="ps-card-num">02</div><div class="ps-card-title">LIMS ↔ SAP QM</div><div class="ps-card-desc">Inspection results, usage decisions and certificate of analysis data between LIMS and SAP QM.</div></div>
-    <div class="ps-card"><div class="ps-card-num">03</div><div class="ps-card-title">Batch Traceability</div><div class="ps-card-desc">End-to-end batch genealogy from raw material receipt through manufacturing to product release.</div></div>
-    <div class="ps-card"><div class="ps-card-num">04</div><div class="ps-card-title">Equipment Integration</div><div class="ps-card-desc">Instrument data capture, calibration management and equipment master synchronization with SAP PM.</div></div>
-    <div class="ps-card"><div class="ps-card-num">05</div><div class="ps-card-title">CSV & Validation</div><div class="ps-card-desc">Full computer system validation documentation in line with GAMP 5, FDA 21 CFR Part 11 and EU Annex 11.</div></div>
-    <div class="ps-card"><div class="ps-card-num">06</div><div class="ps-card-title">OEE & Reporting</div><div class="ps-card-desc">Real-time OEE dashboards and production reporting combining MES and SAP data in a single view.</div></div>
+  <div class="ps-grid" style="grid-template-columns: repeat(2,1fr)">
+    <div class="ps-card"><div class="ps-card-num">01</div><div class="ps-card-title">Manufacturing Operations Integration</div><div class="ps-card-desc">SAP ECC or S/4HANA ↔ Manufacturing Operations. We connect manufacturing operations with enterprise planning and execution processes. From production visibility and operational coordination to inventory accuracy and execution alignment, we help organizations improve transparency and ensure consistent manufacturing performance.</div></div>
+    <div class="ps-card"><div class="ps-card-num">02</div><div class="ps-card-title">Quality & Laboratory Integration</div><div class="ps-card-desc">SAP ECC or S/4HANA ↔ Quality Operations. We align laboratory, quality and operational processes within SAP environments. By integrating quality workflows, inspection activities and release processes, we support faster decision-making, improved compliance and reliable product quality.</div></div>
+    <div class="ps-card"><div class="ps-card-num">03</div><div class="ps-card-title">Batch Traceability</div><div class="ps-card-desc">End-to-End Product Traceability. We enable complete batch visibility across the entire product lifecycle — from raw material intake through manufacturing, packaging and final product release. Our solutions support operational transparency, regulatory readiness and faster investigation capabilities.</div></div>
+    <div class="ps-card"><div class="ps-card-num">04</div><div class="ps-card-title">Equipment & Operational Integration</div><div class="ps-card-desc">Connected Manufacturing Operations. We help organizations integrate operational equipment, maintenance activities and manufacturing processes into a unified operational landscape. This enables improved asset visibility, better maintenance coordination and more reliable production operations.</div></div>
   </div>
 </div>
 <div class="cta-box reveal">
   <div class="cta-box-text">Need a <strong>validated MES/LIMS integration?</strong></div>
-  <a href="mailto:hello@zurichds.com" class="btn-green">Talk to an expert →</a>
+  <a href="mailto:info@zurichds.com" class="btn-green">Talk to an expert →</a>
 </div>
 </div>
 <!-- Search Modal -->
@@ -941,18 +938,18 @@ footer {
       <div class="footer-tagline">Zurich Digital Solutions GmbH</div>
       <div class="footer-tagline" style="margin-top:.35rem;opacity:.6">precision SAP and digital consulting, engineered in Switzerland and deployed globally.</div>
       <div class="footer-contact">
-        Binzmühlestrasse 99, 8050 Zurich<br>
-        hello@zurichds.com
+        Ambassador House (Spaces)<br>
+        Thurgauerstrasse 101, 8152 Zürich<br>
+        info@zurichds.com
       </div>
     </div>
     <div class="footer-col">
       <div class="footer-col-head">Services</div>
       <ul>
-        <li><a href="sap-erp.html">SAP / ERP Consulting</a></li>
+        <li><a href="sap-erp.html">SAP ECC & S4/HANA Functional Consulting</a></li>
         <li><a href="integration-management.html">Integration Management</a></li>
         <li><a href="project-management.html">Project Management</a></li>
-        <li><a href="digital-transformation.html">Digital Transformation</a></li>
-        <li><a href="data-governance.html">Data Governance & Quality</a></li>
+        <li><a href="data-governance.html">Data Governance and Quality</a></li>
         <li><a href="mes-lims.html">MES & LIMS Integration</a></li>
       </ul>
     </div>
@@ -1001,11 +998,10 @@ const obs = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 // Update nav links to point to pages
 const pageMap = {
-  'SAP / ERP Consulting': 'sap-erp.html',
+  'SAP ECC & S4/HANA Functional Consulting': 'sap-erp.html',
   'Integration Management': 'integration-management.html',
   'Project Management': 'project-management.html',
-  'Digital Transformation': 'digital-transformation.html',
-  'Data Governance & Quality': 'data-governance.html',
+  'Data Governance and Quality': 'data-governance.html',
   'MES & LIMS Integration': 'mes-lims.html',
   'Pharmaceuticals & Life Sciences': 'pharma.html',
   'Manufacturing': 'manufacturing.html',
@@ -1036,11 +1032,10 @@ const searchClose = document.getElementById('searchClose');
 
 // Search data
 const searchData = [
-  { title: 'SAP / ERP Consulting', desc: 'End-to-end implementation, rollout and optimization of SAP landscapes', link: 'sap-erp.html', keywords: ['sap', 'erp', 'consulting'] },
+  { title: 'SAP ECC & S4/HANA Functional Consulting', desc: 'End-to-end implementation, rollout and optimization of SAP landscapes', link: 'sap-erp.html', keywords: ['sap', 'erp', 'consulting'] },
   { title: 'Integration Management', desc: 'End-to-end governance and delivery oversight of integration programs', link: 'integration-management.html', keywords: ['integration', 'management'] },
   { title: 'Project Management', desc: 'Structured delivery of complex SAP initiatives', link: 'project-management.html', keywords: ['project', 'management'] },
-  { title: 'Digital Transformation', desc: 'Strategic roadmaps from legacy ERP to modern digital operations', link: 'digital-transformation.html', keywords: ['digital', 'transformation'] },
-  { title: 'Data Governance & Quality', desc: 'Enterprise data governance frameworks, quality rules, stewardship programs', link: 'data-governance.html', keywords: ['data', 'governance', 'quality'] },
+  { title: 'Data Governance and Quality', desc: 'Enterprise data governance frameworks, quality rules, stewardship programs', link: 'data-governance.html', keywords: ['data', 'governance', 'quality'] },
   { title: 'Pharmaceuticals & Life Sciences', desc: 'SAP expertise for pharmaceutical and life science companies', link: 'pharma.html', keywords: ['pharma', 'pharmaceutical', 'life sciences'] },
   { title: 'Manufacturing', desc: 'Manufacturing industry solutions and expertise', link: 'manufacturing.html', keywords: ['manufacturing'] },
   { title: 'Chemicals', desc: 'Chemicals industry solutions and consulting', link: 'chemicals.html', keywords: ['chemicals'] },

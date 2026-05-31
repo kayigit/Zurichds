@@ -329,8 +329,8 @@ img { display: block; max-width: 100%; }
 .hero {
   background: #0A1628;
   position: relative; overflow: hidden;
-  min-height: calc(100vh - 90px);
-  display: flex; align-items: flex-start;
+  height: 100vh;
+  display: flex; align-items: center; justify-content: center;
 }
 .hero-bg {
   position: absolute; inset: 0;
@@ -354,7 +354,12 @@ img { display: block; max-width: 100%; }
 .hero-content {
   position: relative; z-index: 2;
   max-width: 1400px; margin: 0 auto; width: 100%;
-  padding: 3rem 2.5rem 5rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
 }
 .hero-tag {
   font-family: 'Inter', 'Helvetica Neue', sans-serif;
@@ -856,10 +861,10 @@ footer {
   
   /* HERO */
   .hero {
-    min-height: calc(100vh - 90px);
+    height: 100vh;
   }
   .hero-content {
-    padding: 2rem 1.25rem 2.5rem;
+    padding: 2rem 1.25rem;
   }
   .hero-flower {
     width: 100%;
@@ -1026,10 +1031,10 @@ footer {
   }
   
   .hero {
-    min-height: calc(100svh - 90px);
+    height: 100vh;
   }
   .hero-content {
-    padding: 1.75rem 0.75rem 2rem;
+    padding: 1.75rem 0.75rem;
   }
   #edelweiss {
     width: min(180px, 50%);
@@ -1170,11 +1175,10 @@ footer {
       <li class="nav-item">
         <a href="#">Services <span class="nav-chevron">›</span></a>
         <div class="mega">
-          <div class="mega-item"><a href="sap-erp.html">SAP / ERP Consulting</a></div>
-          <div class="mega-item"><a href="integration-management.html">Integration Management</a></div>
+          <div class="mega-item"><a href="sap-erp.html">SAP ECC & S4/HANA Functional Consulting</a></div>
           <div class="mega-item"><a href="project-management.html">Project Management</a></div>
-          <div class="mega-item"><a href="digital-transformation.html">Digital Transformation</a></div>
-          <div class="mega-item"><a href="data-governance.html">Data Governance & Quality</a></div>
+          <div class="mega-item"><a href="integration-management.html">Integration Management</a></div>
+          <div class="mega-item"><a href="data-governance.html">Data Governance and Quality</a></div>
           <div class="mega-item"><a href="mes-lims.html">MES & LIMS Integration</a></div>
         </div>
       </li>
@@ -1381,25 +1385,15 @@ footer {
       <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&fit=crop')"></div>
       <div class="svc-num">01</div>
       <div class="svc-content">
-        <div class="svc-title">SAP / ERP Consulting</div>
+        <div class="svc-title">SAP ECC & S4/HANA Functional Consulting</div>
         <div class="svc-desc">End-to-end implementation, rollout and optimization of SAP landscapes. From S/4HANA blueprinting to post-go-live support.</div>
         <div class="svc-arrow">Learn more</div>
       </div>
     </div>
 
-    <div class="svc-tile reveal" style="transition-delay:.08s" data-href="integration-management.html">
-      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80&fit=crop')"></div>
-      <div class="svc-num">02</div>
-      <div class="svc-content">
-        <div class="svc-title">Integration Management</div>
-        <div class="svc-desc">End-to-end governance and delivery oversight of integration programs across SAP and third-party landscapes.</div>
-        <div class="svc-arrow">Learn more</div>
-      </div>
-    </div>
-
-    <div class="svc-tile reveal" style="transition-delay:.16s" data-href="project-management.html">
+    <div class="svc-tile reveal" style="transition-delay:.08s" data-href="project-management.html">
       <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80&fit=crop')"></div>
-      <div class="svc-num">03</div>
+      <div class="svc-num">02</div>
       <div class="svc-content">
         <div class="svc-title">Project Management</div>
         <div class="svc-desc">Structured delivery of complex SAP initiatives - scope, budget, risk and stakeholder management from kick-off to go-live.</div>
@@ -1407,29 +1401,29 @@ footer {
       </div>
     </div>
 
-    <div class="svc-tile reveal" style="transition-delay:.24s" data-href="digital-transformation.html">
-      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&fit=crop')"></div>
-      <div class="svc-num">04</div>
+    <div class="svc-tile reveal" style="transition-delay:.16s" data-href="integration-management.html">
+      <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80&fit=crop')"></div>
+      <div class="svc-num">03</div>
       <div class="svc-content">
-        <div class="svc-title">Digital Transformation</div>
-        <div class="svc-desc">Strategic roadmaps from legacy ERP to modern digital operations. AI-assisted workflows and process automation.</div>
+        <div class="svc-title">Integration Management</div>
+        <div class="svc-desc">End-to-end governance and delivery oversight of integration programs across SAP and third-party landscapes.</div>
         <div class="svc-arrow">Learn more</div>
       </div>
     </div>
 
-    <div class="svc-tile reveal" style="transition-delay:.32s" data-href="data-governance.html">
+    <div class="svc-tile reveal" style="transition-delay:.24s" data-href="data-governance.html">
       <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80&fit=crop')"></div>
-      <div class="svc-num">05</div>
+      <div class="svc-num">04</div>
       <div class="svc-content">
-        <div class="svc-title">Data Governance & Quality</div>
+        <div class="svc-title">Data Governance and Quality</div>
         <div class="svc-desc">Enterprise data governance frameworks, quality rules, stewardship programs and master data management.</div>
         <div class="svc-arrow">Learn more</div>
       </div>
     </div>
 
-    <div class="svc-tile reveal" style="transition-delay:.4s" data-href="mes-lims.html">
+    <div class="svc-tile reveal" style="transition-delay:.32s" data-href="mes-lims.html">
       <div class="svc-photo" style="background-image:url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80&fit=crop')"></div>
-      <div class="svc-num">06</div>
+      <div class="svc-num">05</div>
       <div class="svc-content">
         <div class="svc-title">MES & LIMS Integration</div>
         <div class="svc-desc">Validated bidirectional SAP connections to manufacturing execution and laboratory systems with full GxP compliance.</div>
@@ -1474,7 +1468,7 @@ footer {
   <div class="cta-band-text">
     Ready to <strong>transform your enterprise</strong> with Swiss precision?
   </div>
-  <a href="mailto:hello@zurichds.com" class="btn-black">Start a conversation →</a>
+  <a href="mailto:info@zurichds.com" class="btn-black">Start a conversation →</a>
 </div>
 
 <!-- FOOTER -->
@@ -1489,18 +1483,18 @@ footer {
       <div class="footer-tagline">Zurich Digital Solutions GmbH</div>
       <div class="footer-tagline" style="margin-top:.35rem;opacity:.6">precision SAP and digital consulting, engineered in Switzerland and deployed globally.</div>
       <div class="footer-contact">
-        Binzmühlestrasse 99, 8050 Zurich<br>
-        hello@zurichds.com
+        Ambassador House (Spaces)<br>
+        Thurgauerstrasse 101, 8152 Zürich<br>
+        info@zurichds.com
       </div>
     </div>
     <div class="footer-col">
       <div class="footer-col-head">Services</div>
       <ul>
-        <li><a href="sap-erp.html">SAP / ERP Consulting</a></li>
+        <li><a href="sap-erp.html">SAP ECC & S4/HANA Functional Consulting</a></li>
         <li><a href="integration-management.html">Integration Management</a></li>
         <li><a href="project-management.html">Project Management</a></li>
-        <li><a href="digital-transformation.html">Digital Transformation</a></li>
-        <li><a href="data-governance.html">Data Governance & Quality</a></li>
+        <li><a href="data-governance.html">Data Governance and Quality</a></li>
         <li><a href="mes-lims.html">MES & LIMS Integration</a></li>
       </ul>
     </div>
@@ -1583,11 +1577,11 @@ const searchClose = document.getElementById('searchClose');
 
 // Search data - pages and their keywords
 const searchData = [
-  { title: 'SAP / ERP Consulting', desc: 'End-to-end implementation, rollout and optimization of SAP landscapes', link: 'sap-erp.html', keywords: ['sap', 'erp', 'consulting'] },
-  { title: 'Integration Management', desc: 'End-to-end governance and delivery oversight of integration programs', link: 'integration-management.html', keywords: ['integration', 'management'] },
+  { title: 'SAP ECC & S4/HANA Functional Consulting', desc: 'End-to-end implementation, rollout and optimization of SAP landscapes', link: 'sap-erp.html', keywords: ['sap', 'erp', 'consulting', 's4hana', 'ecc'] },
   { title: 'Project Management', desc: 'Structured delivery of complex SAP initiatives', link: 'project-management.html', keywords: ['project', 'management'] },
-  { title: 'Digital Transformation', desc: 'Strategic roadmaps from legacy ERP to modern digital operations', link: 'digital-transformation.html', keywords: ['digital', 'transformation'] },
-  { title: 'Data Governance & Quality', desc: 'Enterprise data governance frameworks, quality rules, stewardship programs', link: 'data-governance.html', keywords: ['data', 'governance', 'quality'] },
+  { title: 'Integration Management', desc: 'End-to-end governance and delivery oversight of integration programs', link: 'integration-management.html', keywords: ['integration', 'management'] },
+  { title: 'Data Governance and Quality', desc: 'Enterprise data governance frameworks, quality rules, stewardship programs', link: 'data-governance.html', keywords: ['data', 'governance', 'quality'] },
+  { title: 'MES & LIMS Integration', desc: 'Validated bidirectional SAP connections to manufacturing execution and laboratory systems', link: 'mes-lims.html', keywords: ['mes', 'lims', 'integration', 'manufacturing'] },
   { title: 'Pharmaceuticals & Life Sciences', desc: 'SAP expertise for pharmaceutical and life science companies', link: 'pharma.html', keywords: ['pharma', 'pharmaceutical', 'life sciences'] },
   { title: 'Manufacturing', desc: 'Manufacturing industry solutions and expertise', link: 'manufacturing.html', keywords: ['manufacturing'] },
   { title: 'Chemicals', desc: 'Chemicals industry solutions and consulting', link: 'chemicals.html', keywords: ['chemicals'] },
