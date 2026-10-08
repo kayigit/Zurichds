@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chemicals | Zurich Digital Solutions</title>
+<title>DataLift — Zurich DS. Platform | Zurich Digital Solutions</title>
+<meta name="description" content="Master data quality, measured like any other business figure.">
+<!-- Draft: not linked from the site navigation yet. Remove this line at launch. -->
+<meta name="robots" content="noindex">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 
@@ -257,7 +260,7 @@ img { display: block; max-width: 100%; }
 }
 .section-link:hover { gap: 0.7rem; }
 
-/* Service tiles - full-width row like Zurich DS */
+/* Service tiles - full-width row like ZDS */
 .svc-grid {
   display: grid; grid-template-columns: repeat(6,1fr);
   border-top: 1px solid var(--border);
@@ -350,7 +353,7 @@ img { display: block; max-width: 100%; }
 
 
 /* ══════════════════════════════════════
-   WHY Zurich DS - 3-col with icon list
+   WHY ZDS - 3-col with icon list
 ══════════════════════════════════════ */
 .why { padding: 5rem 0; background: #0A1628; }
 .why-inner {
@@ -843,6 +846,7 @@ footer {
   color: var(--muted);
 }
 </style>
+<link rel="stylesheet" href="platform.css?v=2">
 </head>
 <body>
 <header class="nav">
@@ -865,12 +869,12 @@ footer {
         </div>
       </li>
       <li class="nav-item">
-        <a href="#">Industries <span class="nav-chevron">▾</span></a>
+        <a href="#">Industries <span class="nav-chevron">›</span></a>
         <div class="mega">
-          <div class="mega-item"><a href="#">Pharmaceuticals & Life Sciences</a></div>
-          <div class="mega-item"><a href="#">Manufacturing</a></div>
-          <div class="mega-item"><a href="#">Chemicals</a></div>
-          <div class="mega-item"><a href="#">Medical Devices</a></div>
+          <div class="mega-item"><a href="pharma.html">Pharmaceuticals & Life Sciences</a></div>
+          <div class="mega-item"><a href="manufacturing.html">Manufacturing</a></div>
+          <div class="mega-item"><a href="chemicals.html">Chemicals</a></div>
+          <div class="mega-item"><a href="medical-devices.html">Medical Devices</a></div>
           <div class="mega-item"><a href="foods.html">Food & Beverage</a></div>
         </div>
       </li>
@@ -880,8 +884,8 @@ footer {
           <div class="mt-item"><a href="platform.html"><span>Zurich DS<span style="color:#C8001A">.</span> Platform</span></a></div>
         </div>
       </li>
-      <li class="nav-item"><a href="#">About Us</a></li>
-      <li class="nav-item"><a href="#">Careers</a></li>
+      <li class="nav-item"><a href="about.html">About Us</a></li>
+      <li class="nav-item"><a href="careers.html">Careers</a></li>
     </ul>
 
     <div class="nav-right">
@@ -891,18 +895,46 @@ footer {
           <line x1="10" y1="10" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
       </div>
-      <button class="nav-toggle" id="navToggle"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+      <button class="nav-toggle" id="navToggle">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
       <a href="#contact" class="nav-btn">Contact us</a>
     </div>
   </div>
 </header>
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a> <span>›</span> <span style="color:rgba(255,255,255,0.6)">Chemicals</span>
+<section class="page-hero pf-hero">
+  <div class="page-hero-inner pf-hero-grid">
+    <div>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <span>›</span> <a href="platform.html">Platform</a> <span>›</span> <a href="platform.html#data-configuration">Data &amp; Configuration Suite</a> <span>›</span> <span style="color:rgba(255,255,255,0.6)">DataLift</span>
+      </div>
+      <div class="page-hero-tag">Data &amp; Configuration Suite · Module 1 of 3</div>
+      <h1 class="page-hero-h1">DataLift</h1>
+      <p class="page-hero-sub">Master data quality, measured like any other business figure.</p>
+      <div class="pf-hero-actions">
+        <a href="mailto:kadir.yigit@zurichds.com" class="btn-green">Book a demo →</a>
+        <a href="platform.html" class="btn-outline-w">See the platform</a>
+      </div>
     </div>
-    <h1 class="page-hero-h1">Chemicals</h1>
-    <p class="page-hero-sub">Process manufacturing expertise for specialty, fine and bulk chemical producers.</p>
+    <div class="pf-art"><svg class="pf-il" viewBox="0 0 480 300" role="img" aria-label="Illustration: a quality score of 86 with a rising trend and scores by object (sample data)">
+<rect x="24" y="24" width="432" height="252" class="il-panel"/>
+<text x="48" y="56" class="il-cap">QUALITY SCORE</text>
+<circle cx="104" cy="122" r="44" class="il-track"/>
+<circle cx="104" cy="122" r="44" class="il-rs" style="stroke-width:8" stroke-dasharray="237.8 276.5" stroke-linecap="round" transform="rotate(-90 104 122)"/>
+<text x="104" y="133" text-anchor="middle" class="il-big">86</text>
+<text x="200" y="56" class="il-cap">TREND</text>
+<line x1="200" y1="88" x2="432" y2="88" class="il-dash"/>
+<text x="432" y="80" text-anchor="end" class="il-sm">target</text>
+<polyline points="200,158 246,144 292,148 338,120 384,110 432,96" class="il-line"/>
+<circle cx="200" cy="158" r="3" class="il-w"/><circle cx="246" cy="144" r="3" class="il-w"/><circle cx="292" cy="148" r="3" class="il-w"/>
+<circle cx="338" cy="120" r="3" class="il-w"/><circle cx="384" cy="110" r="3" class="il-w"/><circle cx="432" cy="96" r="4.5" class="il-r"/>
+<line x1="24" y1="184" x2="456" y2="184" class="il-rule"/>
+<text x="48" y="212" class="il-tx">Material</text><rect x="130" y="204" width="264" height="8" class="il-wd"/><rect x="130" y="204" width="235" height="8" class="il-w"/><text x="432" y="212" text-anchor="end" class="il-tx">89</text>
+<text x="48" y="236" class="il-tx">Customer</text><rect x="130" y="228" width="264" height="8" class="il-wd"/><rect x="130" y="228" width="195" height="8" class="il-w"/><text x="432" y="236" text-anchor="end" class="il-tx">74</text>
+<text x="48" y="260" class="il-tx">Vendor</text><rect x="130" y="252" width="264" height="8" class="il-wd"/><rect x="130" y="252" width="161" height="8" class="il-r"/><text x="432" y="260" text-anchor="end" class="il-rt">61</text>
+</svg></div>
   </div>
 </section>
 <div class="page-body">
@@ -910,32 +942,97 @@ footer {
 <div class="page-section reveal">
   <div class="two-col">
     <div>
-      <div class="ps-title">Process manufacturing<br><em>done right.</em></div>
-      <div class="ps-body">The chemicals industry demands precise batch management, complex recipe handling and rigorous regulatory compliance. We bring deep SAP process manufacturing expertise to help chemical producers optimize operations from recipe development to batch release.</div>
+      <div class="ps-label">The challenge</div>
+      <p class="pf-lead">The same master data feeds planning, procurement, production and finance. Everyone agrees it is a problem — but nobody can say how big it is, where it sits, or whether it is getting better.</p>
     </div>
-    <div class="ps-body" style="padding-top:0.5rem">
-      <p style="margin-bottom:1rem">Our consultants have hands-on experience with SAP PP-PI (Process Industries), batch classification, hazardous materials management and REACH compliance documentation.</p>
-      <p>Whether you produce specialty chemicals, agrochemicals or industrial gases, we understand your business and your SAP requirements.</p>
+    <div>
+      <div class="ps-label">What you get</div>
+      <ul class="pf-checks">
+        <li><span>A quality score by object, plant and owner, tracked against targets</span></li>
+        <li><span>Rules defined by the business, in simple language — no coding</span></li>
+        <li><span>Checks run inside your SAP system; nothing is extracted</span></li>
+        <li><span>Faster, safer migrations: you know what to clean before you move it</span></li>
+      </ul>
     </div>
   </div>
 </div>
+
 <div class="page-section reveal">
-  <div class="ps-label">Chemical industry solutions</div>
-  <div class="ps-title">Specialized capabilities</div>
-  <div class="ps-grid">
-    <div class="ps-card"><div class="ps-card-num">01</div><div class="ps-card-title">SAP PP-PI</div><div class="ps-card-desc">Process order management, master recipes and process instructions for batch manufacturing.</div></div>
-    <div class="ps-card"><div class="ps-card-num">02</div><div class="ps-card-title">Batch Management</div><div class="ps-card-desc">Batch classification, characteristics and batch determination for complex chemical products.</div></div>
-    <div class="ps-card"><div class="ps-card-num">03</div><div class="ps-card-title">Quality Management</div><div class="ps-card-desc">In-process and final quality checks with certificate of analysis generation and customer specifications.</div></div>
-    <div class="ps-card"><div class="ps-card-num">04</div><div class="ps-card-title">Dangerous Goods</div><div class="ps-card-desc">SAP EHS dangerous goods management, safety data sheets and hazmat shipping compliance.</div></div>
-    <div class="ps-card"><div class="ps-card-num">05</div><div class="ps-card-title">REACH & Compliance</div><div class="ps-card-desc">Substance volume tracking and regulatory compliance documentation in SAP EHS.</div></div>
-    <div class="ps-card"><div class="ps-card-num">06</div><div class="ps-card-title">Plant Maintenance</div><div class="ps-card-desc">Preventive maintenance, inspection management and equipment lifecycle in SAP PM.</div></div>
+  <div class="ps-label">How it works</div>
+  <div class="ps-title">From define to <em>improve</em></div>
+  <div class="pf-steps pf-steps-4">
+    <div class="pf-step">
+      <div class="pf-step-num">01</div>
+      <div class="pf-step-title">Define</div>
+      <div class="pf-step-desc">An expectation becomes a rule with an owner, target and weight</div>
+    </div>
+    <div class="pf-step">
+      <div class="pf-step-num">02</div>
+      <div class="pf-step-title">Measure</div>
+      <div class="pf-step-desc">Approved rules run on live data, on demand or scheduled</div>
+    </div>
+    <div class="pf-step">
+      <div class="pf-step-num">03</div>
+      <div class="pf-step-title">Analyze</div>
+      <div class="pf-step-desc">A weak score drills down to the records behind it</div>
+    </div>
+    <div class="pf-step">
+      <div class="pf-step-num">04</div>
+      <div class="pf-step-title">Improve</div>
+      <div class="pf-step-desc">Corrections run through standard processes; the next run proves it</div>
+    </div>
   </div>
+  <div class="pf-example">
+    <div class="pf-example-label">Example</div>
+    <div class="pf-example-text">A rule requires every finished-goods material to carry a shelf life and a storage condition. DataLift lists every record that fails it, by plant and owner — and the trend shows when the gap is closed.</div>
+  </div>
+</div>
+
+<div class="page-section reveal">
+  <div class="ps-label">In the product</div>
+  <figure class="pf-shot-fig">
+    <img src="img/platform/datalift.png" width="576" height="360" loading="lazy" alt="DataLift dashboard: quality score, trend by dimension and results by object (sample data)" style="max-width:777px">
+    <figcaption>DataLift dashboard: quality score, trend by dimension and results by object (sample data)</figcaption>
+  </figure>
+</div>
+
+<div class="page-section reveal">
+  <div class="ps-label">DataLift in practice</div>
+  <div class="ps-title">Fast to start, <em>safe to run</em></div>
+  <div class="pf-facts">
+    <div class="pf-fact">
+      <div class="pf-fact-val">48 h</div>
+      <div class="pf-fact-label">From installation to first score</div>
+      <div class="pf-fact-desc">We install and run the first analysis with you.</div>
+    </div>
+    <div class="pf-fact">
+      <div class="pf-fact-val">100+</div>
+      <div class="pf-fact-label">Best-practice rules included</div>
+      <div class="pf-fact-desc">Material and business partner data — adopt, adapt or extend.</div>
+    </div>
+    <div class="pf-fact">
+      <div class="pf-fact-val">In place</div>
+      <div class="pf-fact-label">Nothing leaves your system</div>
+      <div class="pf-fact-desc">Rules are evaluated against live tables in your SAP.</div>
+    </div>
+    <div class="pf-fact">
+      <div class="pf-fact-val">Recorded</div>
+      <div class="pf-fact-label">Every run is logged</div>
+      <div class="pf-fact-desc">Figures, date, time and user — reproducible months later.</div>
+    </div>
+  </div>
+</div>
+
+<div class="pf-pager reveal">
+  <a href="platform.html"><span class="pf-pager-dir">← Overview</span><span class="pf-pager-name">Zurich DS. Platform</span></a>
+  <a href="platform-customizing-xray.html"><span class="pf-pager-dir">Next module →</span><span class="pf-pager-name">Customizing X-Ray</span></a>
 </div>
 <div class="cta-box reveal">
-  <div class="cta-box-text">Discuss your <strong>chemicals SAP project.</strong></div>
-  <a href="mailto:info@zurichds.com" class="btn-green">Contact us →</a>
+  <div class="cta-box-text">Request a <strong>DataLift</strong> demo.</div>
+  <a href="mailto:kadir.yigit@zurichds.com" class="btn-green">Book a demo →</a>
 </div>
 </div>
+
 <!-- Search Modal -->
 <div class="search-overlay" id="searchOverlay">
   <div class="search-modal">
@@ -1024,28 +1121,6 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('up'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-// Update nav links to point to pages
-const pageMap = {
-  'SAP ECC & S/4HANA Functional Consulting': 'sap-erp.html',
-  'Integration Management': 'integration-management.html',
-  'Project Management': 'project-management.html',
-  'Data Governance and Quality': 'data-governance.html',
-  'MES & LIMS Integration': 'mes-lims.html',
-  'Pharmaceuticals & Life Sciences': 'pharma.html',
-  'Manufacturing': 'manufacturing.html',
-  'Chemicals': 'chemicals.html',
-  'Medical Devices': 'medical-devices.html',
-  'Food & Beverage': 'foods.html',
-  'About Us': 'about.html',
-  'Careers': 'careers.html',
-};
-document.querySelectorAll('a').forEach(a => {
-  const txt = a.textContent.trim();
-  if(pageMap[txt]) a.href = pageMap[txt];
-  if(txt === 'Services' || txt === 'Industries' || txt === 'Our Products') a.href = '#';
-  if(!(a.getAttribute('href')||'').startsWith('platform') && (a.href.includes('index.html') || a.textContent.includes('Zurich DS') || a.querySelector('.logo-text'))) 
-    a.href = 'index.html';
-});
 document.querySelector('.logo-text') && (document.querySelector('.logo-text').closest('a, div').style.cursor='pointer');
 document.querySelector('.logo-mark').addEventListener('click', () => location.href='index.html');
 
