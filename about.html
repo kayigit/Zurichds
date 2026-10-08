@@ -125,6 +125,17 @@ img { display: block; max-width: 100%; }
 .mega-item:hover { padding-left: 0.5rem; }
 .mega-item a { font-size: 13.5px; color: var(--mid); display: block; }
 .mega-item:hover a { color: var(--red-d); }
+/* PRODUCTS MENU */
+.mega.mega-tree { min-width: 0; padding: 0.5rem 0; }
+.nav-item:hover .mega.mega-tree { display: block; }
+.mt-item > a {
+  display: block; padding: 0.7rem 1.5rem;
+  font-size: 13.5px; color: var(--mid); white-space: nowrap;
+  transition: color .2s, background .2s;
+}
+.mt-item:hover > a, .mt-item:focus-within > a { color: var(--red-d); background: var(--bg); }
+.nav-links.mobile-open .nav-item.open .mega.mega-tree { display: block; padding: 0 1.25rem 1rem; }
+.nav-links.mobile-open .mt-item > a { padding: 0.5rem 0; background: none; }
 
 .nav-right {
   display: flex; align-items: center; gap: 0.75rem; margin-left: auto;
@@ -1012,10 +1023,8 @@ footer {
       </li>
       <li class="nav-item">
         <a href="#">Our Products <span class="nav-chevron">›</span></a>
-        <div class="mega">
-          <div class="mega-item"><a href="batch-release-accelerator.html">Batch Release Guardian</a></div>
-          <div class="mega-item"><a href="datalift.html">DataLift</a></div>
-          <div class="mega-item"><a href="batch-monitor-cockpit.html">Batch Monitor Cockpit</a></div>
+        <div class="mega mega-tree">
+          <div class="mt-item"><a href="platform.html"><span>Zurich DS<span style="color:#C8001A">.</span> Platform</span></a></div>
         </div>
       </li>
       <li class="nav-item"><a href="about.html">About Us</a></li>
@@ -1212,9 +1221,7 @@ footer {
     <div class="footer-col">
       <div class="footer-col-head">Products</div>
       <ul>
-        <li><a href="datalift.html">DataLift</a></li>
-        <li><a href="batch-release-accelerator.html">Batch Release Guardian</a></li>
-        <li><a href="batch-monitor-cockpit.html">Batch Monitor Cockpit</a></li>
+        <li><a href="platform.html">Zurich DS. Platform</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1258,9 +1265,6 @@ const pageMap = {
   'Chemicals': 'chemicals.html',
   'Medical Devices': 'medical-devices.html',
   'Food & Beverage': 'foods.html',
-  'Batch Release Guardian': 'batch-release-accelerator.html',
-  'Batch Monitor Cockpit': 'batch-monitor-cockpit.html',
-  'DataLift': 'datalift.html',
   'About Us': 'about.html',
   'Careers': 'careers.html',
 };
@@ -1268,7 +1272,7 @@ document.querySelectorAll('a').forEach(a => {
   const txt = a.textContent.trim();
   if(pageMap[txt]) a.href = pageMap[txt];
   if(txt === 'Services' || txt === 'Industries' || txt === 'Our Products') a.href = '#';
-  if(a.href.includes('index.html') || a.textContent.includes('Zurich DS') || a.querySelector('.logo-text')) 
+  if(!(a.getAttribute('href')||'').startsWith('platform') && (a.href.includes('index.html') || a.textContent.includes('Zurich DS') || a.querySelector('.logo-text'))) 
     a.href = 'index.html';
 });
 document.querySelector('.logo-text') && (document.querySelector('.logo-text').closest('a, div').style.cursor='pointer');
@@ -1432,9 +1436,14 @@ const searchData = [
   { title: 'Chemicals', desc: 'Chemicals industry solutions and consulting', link: 'chemicals.html', keywords: ['chemicals'] },
   { title: 'Medical Devices', desc: 'Medical devices industry compliance and solutions', link: 'medical-devices.html', keywords: ['medical', 'devices'] },
   { title: 'Food & Beverage', desc: 'SAP solutions for food and beverage industry', link: 'foods.html', keywords: ['food', 'beverage', 'fmcg', 'foods'] },
-  { title: 'DataLift', desc: 'SAP-native data quality and governance platform', link: 'datalift.html', keywords: ['datalift', 'data quality'] },
-  { title: 'Batch Release Guardian', desc: 'Batch Release Guardian product', link: 'batch-release-accelerator.html', keywords: ['batch', 'release', 'accelerator'] },
-  { title: 'Batch Monitor Cockpit', desc: 'Real-time visibility into critical SAP batch changes with automatic notifications', link: 'batch-monitor-cockpit.html', keywords: ['batch', 'monitor', 'cockpit', 'alerts'] },
+  { title: 'Zurich DS. Platform', desc: 'One platform, two suites, seven SAP-native modules', link: 'platform.html', keywords: ['platform', 'products', 'suite', 'modules'] },
+  { title: 'DataLift', desc: 'Master data quality measured against rules your business defines', link: 'platform-datalift.html', keywords: ['datalift', 'data quality', 'master data'] },
+  { title: 'Customizing X-Ray', desc: 'Configuration checked against the master data actually in use', link: 'platform-customizing-xray.html', keywords: ['customizing', 'x-ray', 'xray', 'configuration'] },
+  { title: 'Production Readiness', desc: 'Production-critical data validated before an order runs', link: 'platform-production-readiness.html', keywords: ['production', 'readiness', 'bom'] },
+  { title: 'Batch Release Guardian', desc: 'A release cockpit from data collection to QP authorization', link: 'platform-release-guardian.html', keywords: ['batch', 'release', 'guardian', 'qp'] },
+  { title: 'Q-DS', desc: 'Realistic inspection durations derived from historical lots', link: 'platform-q-ds.html', keywords: ['q-ds', 'qds', 'inspection', 'planning'] },
+  { title: 'Batch Compliance Monitor', desc: 'Critical changes to batch data detected in real time', link: 'platform-batch-compliance-monitor.html', keywords: ['batch', 'compliance', 'monitor', 'alerts'] },
+  { title: 'Material Master Compliance Monitor', desc: 'Critical changes to material master data, with who, when and old value', link: 'platform-material-master-compliance-monitor.html', keywords: ['material', 'master', 'compliance', 'monitor'] },
   { title: 'About Us', desc: 'Learn about Zurich DS', link: 'about.html', keywords: ['about', 'zurich', 'ds'] },
   { title: 'Careers', desc: 'Join our team at Zurich DS', link: 'careers.html', keywords: ['careers', 'jobs'] }
 ];
